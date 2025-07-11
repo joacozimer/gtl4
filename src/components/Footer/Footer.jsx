@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './Footer.module.css';
 import texts from '../../data/texts';
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 
 const Footer = ({ language }) => {
@@ -9,11 +10,11 @@ const Footer = ({ language }) => {
         <footer className={styles.footer}>
             <div className={styles.footerContent}>
                 <div className={styles.socialLinks}>
-                    <a href="https://www.facebook.com/yourpage" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Facebook">
-                        <FaFacebook />
+                    <a href="https://www.Whatsapp.com/" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Whatsapp">
+                        <FaWhatsapp />
                     </a>
-                    <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Twitter">
-                        <FaTwitter />
+                    <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="X">
+                        <FaXTwitter /> {/* Changed icon to FaXTwitter */}
                     </a>
                     <a href="https://www.instagram.com/youraccount" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Instagram">
                         <FaInstagram />

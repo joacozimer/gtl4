@@ -27,17 +27,39 @@
     height: 100%;
     object-fit: cover;
     filter: brightness(0.7);
-    /* opcional: oscurece para mayor contraste del texto */
+    border-radius: 20px;
+    /* importante para mantener bordes */
+    animation: backgroundPan 20s infinite alternate ease-in-out;
+}
+
+/* ahora animamos solo translateX, sin escalar */
+@keyframes backgroundPan {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-10%);
+    }
 }
 
 .title {
     color: white;
     font-family: 'Mukata Mahee', sans-serif;
     margin-bottom: 20px;
-    left:-400px;
     font-size: 2.2em;
     position: relative;
     z-index: 2;
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideInLeft 1s forwards;
+}
+
+@keyframes slideInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .description {
@@ -63,6 +85,16 @@
     padding: 30px;
     max-width: 800px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: scale(0.95);
+    animation: fadeInZoom 1s 0.5s forwards;
+}
+
+@keyframes fadeInZoom {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .introText {

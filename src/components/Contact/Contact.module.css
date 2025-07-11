@@ -2,60 +2,141 @@
 
 .container {
     padding: 40px 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: flex-start;
-    gap: 40px;
     background-color: var(--background-color);
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
     text-align: left;
 }
 
-.textSection {
-    flex: 1;
+.sideBySide {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.contactForm,
+.infoCard {
+    flex: 1 1 45%;
     min-width: 300px;
-    max-width: 45%;
-    text-align: left;
-}
-
-.title {
-    color: var(--greenlime-pantone-7723c);
-    font-family: 'Mukata Mahee', sans-serif;
-    margin-bottom: 20px;
-    font-size: 2.2em;
-}
-
-.description {
-    color: var(--text-color);
-    font-family: 'Montserrat Regular', sans-serif;
-    margin-bottom: 30px;
-    margin-left: 0;
-    margin-right: auto;
-    line-height: 1.6;
 }
 
 .contactForm {
-    flex: 1;
-    min-width: 300px;
-    max-width: 45%;
-    margin: 0;
-    padding: 25px;
+    position: relative;
+    padding: 50px 25px 25px;
     border: 1px solid var(--greenlime-pantone-585c);
     border-radius: 10px;
     background-color: var(--dropdown-bg);
-    text-align: left;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.formGroup {
-    margin-bottom: 20px;
+/* ESTADO DEL SERVIDOR */
+.serverStatus {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 0.7em;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.formGroup label {
-    display: none;
+/* ✅ MODO CLARO */
+.serverStatus.online {
+    background-color: rgba(0, 128, 0, 0.1);
+    color: black;
+    border: 1px solid var(--greenlime-pantone-5487c);
+}
+
+/* ✅ MODO OSCURO */
+body.dark .serverStatus.online {
+    background-color: rgba(0, 255, 0, 0.1);
+    color: white !important;
+    border: 1px solid var(--greenlime-pantone-5487c);
+}
+
+.serverStatus.offline {
+    background-color: rgba(204, 0, 0, 0.1);
+    color: white;
+    border: 1px solid #990000;
+}
+
+.infoCard {
+    position: relative;
+    height: 100%;
+    border-radius: 16px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.zoomImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    animation: zoomSlow 10s ease-in-out infinite;
+}
+
+@keyframes zoomSlow {
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.05);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    75% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 16px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.title {
+    color: #fff;
+    font-family: 'Mukata Mahee', sans-serif;
+    margin-bottom: 15px;
+    font-size: 2em;
+}
+
+.description {
+    font-family: 'Montserrat Regular', sans-serif;
+    font-size: 1em;
+    line-height: 1.5;
+    max-width: 90%;
+}
+
+.formGroup {
+    margin-bottom: 20px;
 }
 
 .inputWrapper {
@@ -82,8 +163,9 @@
     top: 14px;
 }
 
-.formGroup input::placeholder,
-.formGroup textarea::placeholder {
+input::placeholder,
+textarea::placeholder,
+.selectField::placeholder {
     color: var(--text-color-light);
     font-family: 'Montserrat Regular', sans-serif;
     font-size: 1em;
@@ -91,14 +173,14 @@
     transition: opacity 0.3s ease;
 }
 
-.formGroup input:focus::placeholder,
-.formGroup textarea:focus::placeholder {
+input:focus::placeholder,
+textarea:focus::placeholder {
     opacity: 0.5;
 }
 
-.formGroup input,
-.formGroup textarea,
-.formGroup .selectField {
+input,
+textarea,
+.selectField {
     width: 100%;
     padding: 12px 15px 12px 45px;
     border: 1px solid var(--greenlime-pantone-5487c);
@@ -111,32 +193,9 @@
     box-sizing: border-box;
 }
 
-.formGroup .selectField:hover {
-    border-color: var(--greenlime-pantone-7723c);
-    background-color: var(--dropdown-hover-bg);
-    box-shadow: 0 0 0 2px rgba(97, 189, 137, 0.2);
-}
-
-.formGroup input:focus,
-.formGroup textarea:focus,
-.formGroup .selectField:focus {
-    border-color: var(--greenlime-pantone-7723c);
-    border-width: 2px;
-    box-shadow: 0 0 0 4px rgba(97, 189, 137, 0.4);
-    outline: none;
-    background-color: var(--dropdown-hover-bg);
-    transform: translateY(-2px);
-}
-
-.formGroup textarea {
-    resize: vertical;
-}
-
 .selectField {
     appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%235E6972%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%01%200%2024.7L159.9%20228.9c-9.2%209.2-24.2%209.2-33.4%200L5.4%2094.1a17.6%2017.6%200%2001%200-24.7c9.2-9.2%2024.2-9.2%2033.4%200L146.2%20174.3l107.4-107.9c9.2-9.2%2024.2-9.2%2033.4%200z%22%2F%3E%3C%2Fsvg%3E');
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%235E6972%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%201%200%2024.7L159.9%20228.9c-9.2%209.2-24.2%209.2-33.4%200L5.4%2094.1a17.6%2017.6%200%200%201%200-24.7c9.2-9.2%2024.2-9.2%2033.4%200L146.2%20174.3l107.4-107.9c9.2-9.2%2024.2-9.2%2033.4%200z%22/%3E%3C/svg%3E');
     background-repeat: no-repeat;
     background-position: right 10px top 50%;
     background-size: 12px auto;
@@ -145,6 +204,21 @@
 
 .inputWrapper .selectField {
     padding-left: 45px;
+}
+
+input:focus,
+textarea:focus,
+.selectField:focus {
+    border-color: var(--greenlime-pantone-7723c);
+    border-width: 2px;
+    box-shadow: 0 0 0 4px rgba(97, 189, 137, 0.4);
+    outline: none;
+    background-color: var(--dropdown-hover-bg);
+    transform: translateY(-2px);
+}
+
+textarea {
+    resize: vertical;
 }
 
 .submitButton {
@@ -159,9 +233,7 @@
     transition: background-color 0.3s ease, transform 0.2s ease-out, box-shadow 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     display: block;
-    /* Asegura que el botón se comporte como un bloque */
     margin: 0 auto;
-    /* Centra el botón */
 }
 
 .submitButton:hover {
@@ -170,67 +242,25 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* Ajustes Responsivos */
-@media (max-width: 768px) {
-    .container {
+/* Responsive */
+@media (max-width: 900px) {
+    .sideBySide {
         flex-direction: column;
         align-items: center;
-        gap: 30px;
-        padding: 30px 15px;
     }
 
-    .textSection,
+    .infoCard,
     .contactForm {
-        max-width: 95%;
-        width: 100%;
-        min-width: unset;
+        flex: 1 1 100%;
+        max-width: 100%;
     }
 
-    .title {
-        font-size: 1.8em;
+    .infoCard {
+        height: 300px;
     }
 
-    .description {
-        font-size: 0.95em;
-        margin-bottom: 25px;
-    }
-
-    .contactForm {
+    .overlay {
         padding: 20px;
-        margin: 0 auto;
-    }
-
-    .formGroup {
-        margin-bottom: 15px;
-    }
-
-    .formGroup input,
-    .formGroup textarea,
-    .formGroup .selectField {
-        padding: 10px 12px 10px 40px;
-        font-size: 0.95em;
-        border-radius: 8px;
-    }
-
-    .inputIcon {
-        left: 12px;
-        font-size: 1em;
-    }
-
-    .textareaIcon {
-        top: 12px;
-    }
-
-    .submitButton {
-        padding: 10px 20px;
-        font-size: 1em;
-        border-radius: 6px;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 20px 10px;
     }
 
     .title {
@@ -238,55 +268,65 @@
     }
 
     .description {
-        font-size: 0.9em;
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 600px) {
+    .sideBySide {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 30px;
     }
 
-    .formGroup input,
-    .formGroup textarea,
-    .formGroup .selectField {
-        padding: 8px 10px 8px 35px;
-        font-size: 0.9em;
+    .infoCard,
+    .contactForm {
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin-right: 0;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
 
-    .inputIcon {
-        left: 10px;
-        font-size: 0.9em;
+    .infoCard {
+        height: 250px;
     }
 
-    .textareaIcon {
-        top: 10px;
+    .overlay {
+        padding: 15px;
+    }
+
+    .title {
+        font-size: 1.4em;
+        margin-bottom: 10px;
+    }
+
+    .description {
+        font-size: 0.9em;
+        max-width: 100%;
+    }
+
+    input,
+    textarea,
+    .selectField {
+        font-size: 0.95em;
+        padding: 10px 15px 10px 40px;
     }
 
     .submitButton {
         width: 100%;
-        padding: 10px;
-        font-size: 0.9em;
-        border-radius: 5px;
+        font-size: 1em;
+        padding: 12px 0;
+        border-radius: 6px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
     }
-}
-/* ... tus estilos existentes ... */
 
-.serverStatus {
-    margin-top: 15px;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-weight: bold;
-    text-align: center;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
+    .inputIcon {
+        font-size: 1em;
+        left: 12px;
+    }
 
-.serverStatus.online {
-    background-color: #e6ffe6;
-    /* Verde claro */
-    color: #008000;
-    /* Verde oscuro */
-    border: 1px solid #008000;
-}
-
-.serverStatus.offline {
-    background-color: #ffe6e6;
-    /* Rojo claro */
-    color: #cc0000;
-    /* Rojo oscuro */
-    border: 1px solid #cc0000;
+    .textareaIcon {
+        top: 12px;
+    }
 }

@@ -58,14 +58,19 @@
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
 }
 
-.socialIcon[aria-label="Facebook"]:hover {
-    background-color: #3b5998;
-    border-color: #3b5998;
+.socialIcon[aria-label="Whatsapp"]:hover {
+    background-color: #25D366;
+    /* WhatsApp green */
+    border-color: #25D366;
+    /* WhatsApp green */
 }
 
-.socialIcon[aria-label="Twitter"]:hover {
-    background-color: #00acee;
-    border-color: #00acee;
+.socialIcon[aria-label="X"]:hover {
+    /* Changed aria-label to X */
+    background-color: #000000;
+    /* X brand black */
+    border-color: #000000;
+    /* X brand black */
 }
 
 .socialIcon[aria-label="Instagram"]:hover {
