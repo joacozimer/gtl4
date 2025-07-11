@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 import './App.css';
-import './styles/colors.module.css';
-
+import './styles/colors.module.css'; // Ensure this file also has your dark mode variables
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import HomePage from './components/Home/Home';
@@ -11,6 +10,7 @@ import ServicesPage from './components/Services/Services';
 import AboutUsPage from './components/AboutUs/AboutUs';
 //import CommunityPage from './components/Community/Community';
 import ContactPage from './components/Contact/Contact';
+import EmployeeLogin from './components/EmployeeLogin/EmployeeLogin'; // CAMBIO: Importar EmployeeLogin
 
 function App() {
   const [language, setLanguage] = useState('es');
@@ -25,8 +25,9 @@ function App() {
   };
 
   useEffect(() => {
+    // This correctly applies the 'light' or 'dark' class to the body
     document.body.className = theme;
-  }, [theme]);
+  }, [theme]); // Dependency on 'theme' ensures this runs whenever theme changes
 
   return (
     <Router>
@@ -45,7 +46,11 @@ function App() {
           <Route path="/about-us" element={<AboutUsPage language={language} />} />
           {/*<Route path="/community" element={<CommunityPage language={language} />} />*/}
           <Route path="/contact" element={<ContactPage language={language} />} />
-          <Route path="/employee-access" element={<div><h1>Acceso a Empleados</h1><p>Contenido para empleados aquí.</p></div>} /> {/* Ruta de ejemplo para Acceso Empleados */}
+          {/* CAMBIO: Renderizar EmployeeLogin y pasar las props language Y theme */}
+          <Route
+            path="/employee-login"
+            element={<EmployeeLogin language={language} theme={theme} />}
+          />
         </Routes>
       </main>
 

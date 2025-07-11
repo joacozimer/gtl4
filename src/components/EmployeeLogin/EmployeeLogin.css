@@ -1,0 +1,270 @@
+/* Contenedor principal del login */
+.employee-login-container {
+    position: relative;
+    /* Necesario para el pseudo-elemento ::before */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - var(--navbar-height, 80px) - var(--footer-height, 40px));
+    padding: 20px;
+    background-image: url('../../assets/images/FondoLogin.jpg');
+    /* Ruta a tu imagen */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--background-color);
+    /* Color de fallback global */
+    color: var(--text-color);
+    /* Hereda del body (blanco en modo oscuro) */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow: hidden;
+    border-radius: 20px;
+    /* **NUEVO: Bordes redondeados para el contenedor principal** */
+}
+
+/* **Overlay para opacar la imagen de fondo en modo oscuro** */
+body.dark .employee-login-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Capa semi-transparente negra */
+    z-index: 0;
+    /* Asegura que esté debajo del contenido */
+}
+
+/* Estilos para la card del formulario */
+.login-form-card {
+    background-color: #FFFFFF;
+    /* Fondo de tarjeta para modo claro */
+    padding: 50px 40px 40px 40px;
+    border-radius: 15px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    /* Sombra suavizada */
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    padding-top: 100px;
+    z-index: 1;
+    /* Asegura que la tarjeta esté sobre el overlay */
+}
+
+/* **Fondo de tarjeta más oscuro para modo oscuro** */
+body.dark .login-form-card {
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Fondo más oscuro para la tarjeta en modo oscuro */
+}
+
+/* Estilos para el título H2 */
+.login-form-card h2 {
+    margin-top: 40px;
+    /* Ajuste para dar espacio al logo más grande */
+    margin-bottom: 25px;
+    color: var(--greenlime-pantone-431c);
+    /* Color en modo claro */
+    font-size: 2em;
+    font-weight: 600;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out 1.2s, transform 0.6s ease-out 1.2s, color 0.3s ease;
+}
+
+/* **Color de H2 en blanco para modo oscuro** */
+body.dark .login-form-card h2 {
+    color: #FFFFFF !important;
+    /* <--- CAMBIO: Añadido !important */
+    /* H2 en blanco para modo oscuro */
+}
+
+.login-form-card.animated h2 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilos para el logo único animado */
+.login-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(2.5);
+    /* Tamaño inicial del logo */
+    width: 250px;
+    height: auto;
+    border-radius: 15px;
+    opacity: 0;
+    transition: all 1s ease-out, filter 0.3s ease;
+    /* **Añadida transición para filtro** */
+    z-index: 10;
+}
+
+/* Estado final de la animación del logo */
+.login-form-card.animated .login-logo {
+    top: 20px;
+    /* Se mantuvo en 20px para no chocar con el título si es muy grande */
+    left: 50%;
+    transform: translateX(-50%) scale(0.6);
+    /* **LOGO MÁS GRANDE** (se mantiene 0.6) */
+    opacity: 1;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* **NUEVO: Cambiar el logo en modo oscuro** */
+body.dark .login-form-card.animated .login-logo {
+    /* Opciones para cambiar el logo en modo oscuro: */
+    /* 1. Aplicar un filtro (para imágenes PNG/JPG): */
+    filter: brightness(0.8) contrast(1.2);
+    /* Ajusta brillo y contraste para un look diferente */
+    /* filter: invert(1); /* Invierte los colores (puede no verse bien con todos los logos) */
+    /* filter: grayscale(1) brightness(1.5); /* Blanco y negro más brillante */
+
+    /* 2. Si es un SVG y quieres cambiarle el color de relleno: */
+    /* fill: #FFFFFF; /* Para un SVG, cambiaría el color de relleno a blanco */
+}
+
+
+.login-form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+/* Centrado de inputs y sus iconos */
+.input-icon-wrapper {
+    max-width: 350px;
+    /* Ancho máximo para el wrapper */
+    width: 100%;
+    margin: 0 auto;
+    /* Centra el wrapper horizontalmente */
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    color: var(--greenlime-pantone-431c);
+    /* Color en modo claro */
+    font-size: 1.1em;
+    z-index: 2;
+}
+
+/* **Color de icono en blanco para modo oscuro** */
+body.dark .input-icon {
+    color: #FFFFFF;
+    /* Icono en blanco para modo oscuro */
+}
+
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    /* El input llena el 100% de su contenedor (el wrapper) */
+    padding: 14px 14px 14px 50px;
+    border: 2px solid #ddd;
+    /* Borde para modo claro */
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    /* Fondo de input para modo claro */
+    color: var(--greenlime-pantone-431c);
+    /* Color de texto en input para modo claro */
+    font-size: 1.1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* **Colores de input en modo oscuro** */
+body.dark .form-group input[type="email"],
+body.dark .form-group input[type="password"] {
+    border-color: #555;
+    /* Borde más oscuro */
+    background-color: #444444;
+    /* Fondo de input oscuro */
+    color: #FFFFFF;
+    /* Texto del input en blanco */
+}
+
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 5px rgba(var(--accent-color-rgb, 102, 187, 106), 0.5);
+    outline: none;
+}
+
+.login-button {
+    width: 100%;
+    padding: 16px;
+    background-color: var(--greenlime-pantone-431c);
+    /* Color de botón en modo claro */
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, color 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* **Colores de botón en modo oscuro** */
+body.dark .login-button {
+    background-color: var(--greenlime-lime-green);
+    color: white;
+    /* Texto de botón en oscuro */
+}
+
+.login-button:hover {
+    background-color: #007700;
+    /* Hover en modo claro */
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* **Hover de botón en modo oscuro** */
+body.dark .login-button:hover {
+    background-color: #60c960;
+    /* Hover en modo oscuro */
+}
+
+/* Estilos para los SweetAlerts en modo oscuro */
+.dark-mode-swal {
+    background-color: #2a2a2a !important;
+    /* Mismo fondo de tarjeta oscuro */
+    color: #f0f0f0 !important;
+    /* Texto blanco */
+}
+
+.dark-mode-swal .swal2-title,
+.dark-mode-swal .swal2-content {
+    color: #f0f0f0 !important;
+}
+
+.dark-mode-swal .swal2-popup button {
+    background-color: var(--greenlime-lime-green) !important;
+    /* Botón oscuro */
+    color: #222222 !important;
+    /* Texto de botón oscuro */
+}
+
+/* Estilos para SweetAlerts en modo claro (default) */
+.light-mode-swal {
+    background-color: #FFFFFF !important;
+    /* Fondo de tarjeta claro */
+    color: var(--greenlime-pantone-431c) !important;
+    /* Texto oscuro */
+}

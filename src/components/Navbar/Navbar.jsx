@@ -75,11 +75,12 @@ const Navbar = ({ language, toggleLanguage, theme, toggleTheme }) => {
         }
     };
 
-    const handleEmployeeAccessClick = (event) => {
+    // MODIFICAR: Ahora navega a /employee-login en lugar de /employee-access
+    const handleEmployeeLoginClick = (event) => {
         event.stopPropagation();
-        navigate('/employee-access');
+        navigate('/employee-login'); // Cambiado de /employee-access a /employee-login
         setShowSettingsDropdown(false);
-        if (showMobileMenu) { // If clicked from mobile menu, close mobile menu too
+        if (showMobileMenu) {
             setShowMobileMenu(false);
         }
     };
@@ -88,7 +89,7 @@ const Navbar = ({ language, toggleLanguage, theme, toggleTheme }) => {
         event.stopPropagation();
         toggleLanguage();
         setShowSettingsDropdown(false);
-        if (showMobileMenu) { // If clicked from mobile menu, close mobile menu too
+        if (showMobileMenu) {
             setShowMobileMenu(false);
         }
     };
@@ -137,7 +138,8 @@ const Navbar = ({ language, toggleLanguage, theme, toggleTheme }) => {
                             {theme === 'light' ? texts.navbar.settings.darkMode[language] : texts.navbar.settings.lightMode[language]}
                         </div>
 
-                        <div className={styles.dropdownItem} onClick={handleEmployeeAccessClick}>
+                        {/* MODIFICAR: Ahora llama a handleEmployeeLoginClick */}
+                        <div className={styles.dropdownItem} onClick={handleEmployeeLoginClick}>
                             <FaUserTie className={styles.dropdownItemIcon} />
                             {texts.navbar.settings.employeeAccess[language]}
                         </div>
@@ -168,7 +170,8 @@ const Navbar = ({ language, toggleLanguage, theme, toggleTheme }) => {
                     )}
                     {theme === 'light' ? texts.navbar.settings.darkMode[language] : texts.navbar.settings.lightMode[language]}
                 </li>
-                <li className={styles.mobileSettingItem} onClick={handleEmployeeAccessClick}>
+                {/* MODIFICAR: Ahora llama a handleEmployeeLoginClick */}
+                <li className={styles.mobileSettingItem} onClick={handleEmployeeLoginClick}>
                     <FaUserTie className={styles.dropdownItemIcon} />
                     {texts.navbar.settings.employeeAccess[language]}
                 </li>

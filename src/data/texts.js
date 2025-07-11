@@ -77,6 +77,20 @@ We specialize in the design and implementation of simple and efficient solutions
         }
     },
 
+    // CAMBIO: Nueva sección para textos de login
+    employeeLogin: {
+        title: { es: "Acceso a Empleados", en: "Employee Access" },
+        emailPlaceholder: { es: "Correo Electrónico @greenlimetech.com", en: "Email @greenlimetech.com" },
+        passwordPlaceholder: { es: "Contraseña", en: "Password" },
+        loginButton: { es: "Iniciar Sesión", en: "Log In" },
+        domainErrorTitle: { es: "Error de Dominio", en: "Domain Error" },
+        domainErrorMessage: { es: "El correo electrónico debe ser de dominio @greenlimetech.com", en: "Email must be from @greenlimetech.com domain" },
+        loginSuccessTitle: { es: "¡Inicio de Sesión Exitoso!", en: "Login Successful!" },
+        loginSuccessMessage: { es: "Redirigiendo a la página de empleados...", en: "Redirecting to employee page..." },
+        credentialsErrorTitle: { es: "Error de Credenciales", en: "Credential Error" },
+        credentialsErrorMessage: { es: "Correo electrónico o contraseña incorrectos.", en: "Incorrect email or password." },
+    },
+
     communityPage: {
         title: { es: "Nuestra Comunidad", en: "Our Community" },
         description: { es: "Únase a nuestra creciente comunidad de profesionales y entusiastas de la tecnología.", en: "Join our growing community of technology professionals and enthusiasts." },
