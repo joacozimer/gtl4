@@ -1,0 +1,164 @@
+@import '../../styles/colors.module.css';
+
+.footer {
+    background-image: url('../../assets/images/FondoFooter.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    text-align: center;
+    border-top: 1px solid #eee;
+    border-radius: 20px 10px 0 0;
+    margin-top: 40px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footerContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.socialLinks {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.socialIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    color: #ffffff;
+    font-size: 1.8em;
+    text-decoration: none;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.socialIcon:hover {
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-color: #ffffff;
+    transform: scale(1.15) translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.socialIcon[aria-label="Facebook"]:hover {
+    background-color: #3b5998;
+    border-color: #3b5998;
+}
+
+.socialIcon[aria-label="Twitter"]:hover {
+    background-color: #00acee;
+    border-color: #00acee;
+}
+
+.socialIcon[aria-label="Instagram"]:hover {
+    background-color: #C13584;
+    border-color: #C13584;
+}
+
+.socialIcon[aria-label="LinkedIn"]:hover {
+    background-color: #0077b5;
+    border-color: #0077b5;
+}
+
+.legalLinks {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.legalLink {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Montserrat Regular', sans-serif;
+    font-size: 0.95em;
+    transition: color 0.3s ease, transform 0.2s ease-out;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.legalLink:hover {
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.legalSeparator {
+    color: #ffffff;
+    opacity: 0.6;
+    font-size: 0.9em;
+}
+
+.copyright {
+    font-size: 0.95em;
+    font-family: 'Montserrat Regular', sans-serif;
+    opacity: 0.9;
+    margin-top: 20px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    .footerContent {
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    .socialLinks,
+    .legalLinks {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .footer {
+        padding: 20px;
+        border-radius: 5px 5px 0 0;
+        margin-top: 30px;
+    }
+
+    .socialIcon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.6em;
+    }
+
+    .legalLink {
+        font-size: 0.9em;
+    }
+
+    .copyright {
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 480px) {
+    .socialIcon {
+        width: 35px;
+        height: 35px;
+        font-size: 1.4em;
+    }
+
+    .legalLink {
+        font-size: 0.8em;
+    }
+
+    .copyright {
+        font-size: 0.75em;
+    }
+}

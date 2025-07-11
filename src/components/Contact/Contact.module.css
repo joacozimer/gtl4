@@ -1,0 +1,292 @@
+@import '../../styles/colors.module.css';
+
+.container {
+    padding: 40px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 40px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: left;
+}
+
+.textSection {
+    flex: 1;
+    min-width: 300px;
+    max-width: 45%;
+    text-align: left;
+}
+
+.title {
+    color: var(--greenlime-pantone-7723c);
+    font-family: 'Mukata Mahee', sans-serif;
+    margin-bottom: 20px;
+    font-size: 2.2em;
+}
+
+.description {
+    color: var(--text-color);
+    font-family: 'Montserrat Regular', sans-serif;
+    margin-bottom: 30px;
+    margin-left: 0;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.contactForm {
+    flex: 1;
+    min-width: 300px;
+    max-width: 45%;
+    margin: 0;
+    padding: 25px;
+    border: 1px solid var(--greenlime-pantone-585c);
+    border-radius: 10px;
+    background-color: var(--dropdown-bg);
+    text-align: left;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.formGroup label {
+    display: none;
+}
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.inputIcon {
+    position: absolute;
+    left: 15px;
+    color: var(--greenlime-pantone-431c);
+    font-size: 1.1em;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+.textareaWrapper {
+    align-items: flex-start;
+}
+
+.textareaIcon {
+    top: 14px;
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+    color: var(--text-color-light);
+    font-family: 'Montserrat Regular', sans-serif;
+    font-size: 1em;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.formGroup input:focus::placeholder,
+.formGroup textarea:focus::placeholder {
+    opacity: 0.5;
+}
+
+.formGroup input,
+.formGroup textarea,
+.formGroup .selectField {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: 1px solid var(--greenlime-pantone-5487c);
+    border-radius: 15px;
+    font-family: 'Montserrat Regular', sans-serif;
+    font-size: 1em;
+    background-color: var(--background-color-light);
+    color: var(--text-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, transform 0.2s ease-out;
+    box-sizing: border-box;
+}
+
+.formGroup .selectField:hover {
+    border-color: var(--greenlime-pantone-7723c);
+    background-color: var(--dropdown-hover-bg);
+    box-shadow: 0 0 0 2px rgba(97, 189, 137, 0.2);
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus,
+.formGroup .selectField:focus {
+    border-color: var(--greenlime-pantone-7723c);
+    border-width: 2px;
+    box-shadow: 0 0 0 4px rgba(97, 189, 137, 0.4);
+    outline: none;
+    background-color: var(--dropdown-hover-bg);
+    transform: translateY(-2px);
+}
+
+.formGroup textarea {
+    resize: vertical;
+}
+
+.selectField {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%235E6972%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%01%200%2024.7L159.9%20228.9c-9.2%209.2-24.2%209.2-33.4%200L5.4%2094.1a17.6%2017.6%200%2001%200-24.7c9.2-9.2%2024.2-9.2%2033.4%200L146.2%20174.3l107.4-107.9c9.2-9.2%2024.2-9.2%2033.4%200z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 12px auto;
+    padding-right: 30px;
+}
+
+.inputWrapper .selectField {
+    padding-left: 45px;
+}
+
+.submitButton {
+    background-color: var(--greenlime-pantone-7723c);
+    color: var(--greenlime-white);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Mukata Mahee', sans-serif;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease-out, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    display: block;
+    /* Asegura que el botón se comporte como un bloque */
+    margin: 0 auto;
+    /* Centra el botón */
+}
+
+.submitButton:hover {
+    background-color: var(--greenlime-pantone-585c);
+    transform: translateY(-1px) scale(1.01);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Ajustes Responsivos */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        padding: 30px 15px;
+    }
+
+    .textSection,
+    .contactForm {
+        max-width: 95%;
+        width: 100%;
+        min-width: unset;
+    }
+
+    .title {
+        font-size: 1.8em;
+    }
+
+    .description {
+        font-size: 0.95em;
+        margin-bottom: 25px;
+    }
+
+    .contactForm {
+        padding: 20px;
+        margin: 0 auto;
+    }
+
+    .formGroup {
+        margin-bottom: 15px;
+    }
+
+    .formGroup input,
+    .formGroup textarea,
+    .formGroup .selectField {
+        padding: 10px 12px 10px 40px;
+        font-size: 0.95em;
+        border-radius: 8px;
+    }
+
+    .inputIcon {
+        left: 12px;
+        font-size: 1em;
+    }
+
+    .textareaIcon {
+        top: 12px;
+    }
+
+    .submitButton {
+        padding: 10px 20px;
+        font-size: 1em;
+        border-radius: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 10px;
+    }
+
+    .title {
+        font-size: 1.6em;
+    }
+
+    .description {
+        font-size: 0.9em;
+    }
+
+    .formGroup input,
+    .formGroup textarea,
+    .formGroup .selectField {
+        padding: 8px 10px 8px 35px;
+        font-size: 0.9em;
+    }
+
+    .inputIcon {
+        left: 10px;
+        font-size: 0.9em;
+    }
+
+    .textareaIcon {
+        top: 10px;
+    }
+
+    .submitButton {
+        width: 100%;
+        padding: 10px;
+        font-size: 0.9em;
+        border-radius: 5px;
+    }
+}
+/* ... tus estilos existentes ... */
+
+.serverStatus {
+    margin-top: 15px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.serverStatus.online {
+    background-color: #e6ffe6;
+    /* Verde claro */
+    color: #008000;
+    /* Verde oscuro */
+    border: 1px solid #008000;
+}
+
+.serverStatus.offline {
+    background-color: #ffe6e6;
+    /* Rojo claro */
+    color: #cc0000;
+    /* Rojo oscuro */
+    border: 1px solid #cc0000;
+}

@@ -1,38 +1,66 @@
-.App {
-  text-align: center;
+/* Estilos globales para el body */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat Regular', sans-serif;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Tema Claro */
+body.light {
+  --background-color: var(--greenlime-white);
+  --text-color: var(--greenlime-pantone-431c);
+  --navbar-bg: #FFFFFF;
+  --navbar-text: var(--greenlime-pantone-431c);
+  --dropdown-bg: #FFFFFF;
+  --dropdown-text: var(--greenlime-pantone-431c);
+  --dropdown-hover-bg: #f0f0f0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Tema Oscuro */
+body.dark {
+  --background-color: #333333;
+  --text-color: #f0f0f0;
+  --navbar-bg: #222222;
+  --navbar-text: #FFFFFF;
+  --dropdown-bg: #444444;
+  --dropdown-text: #FFFFFF;
+  --dropdown-hover-bg: #555555;
+}
+
+/* Aplicación de las variables de tema */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Estilos para el elemento main (contenido principal) */
+main {
+  min-height: calc(100vh - 120px);
+  padding: 40px 20px;
+  padding-top: 120px;
+}
+
+/* Responsive adjustment for main content padding-top */
+@media (max-width: 768px) {
+  main {
+    /* Mobile navbar height approx. 40px (logo) + 2*10px (padding) + 10px (top margin) = 70px. */
+    padding-top: 90px;
+    /* Adjust for smaller navbar height on mobile */
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Global styles for headings and paragraphs if not defined elsewhere */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Mukata Mahee', sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+p {
+  font-family: 'Montserrat Regular', sans-serif;
 }

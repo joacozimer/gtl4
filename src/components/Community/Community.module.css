@@ -1,0 +1,24 @@
+@import '../../styles/colors.module.css';
+
+.container {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.title {
+    color: var(--greenlime-pantone-7723c);
+    font-family: 'Mukata Mahee', sans-serif;
+    margin-bottom: 20px;
+    font-size: 2.2em;
+}
+
+.description {
+    color: var(--text-color);
+    font-family: 'Montserrat Regular', sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}

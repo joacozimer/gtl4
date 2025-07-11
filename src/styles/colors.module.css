@@ -1,0 +1,12 @@
+:root {
+    /* Colores Corporativos */
+    --greenlime-white: #FFFFFF;
+    --greenlime-pantone-585c: #CBD46E;
+    --greenlime-pantone-7723c: #5FA590;
+    --greenlime-pantone-431c: #5E6972;
+
+    /* Colores Complementarios */
+    --greenlime-pantone-459c: #E2CB6F;
+    --greenlime-pantone-5487c: #56807C;
+    --greenlime-pantone-410c: #72675e; 
+}
