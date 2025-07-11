@@ -77,6 +77,16 @@ We specialize in the design and implementation of simple and efficient solutions
         }
     },
 
+    communityPage: {
+        title: { es: "Nuestra Comunidad", en: "Our Community" },
+        description: { es: "Únase a nuestra creciente comunidad de profesionales y entusiastas de la tecnología.", en: "Join our growing community of technology professionals and enthusiasts." },
+        newPostTitle: { es: "Crear una nueva consulta", en: "Create a new query" },
+        titlePlaceholder: { es: "Título de la consulta...", en: "Query title..." },
+        contentPlaceholder: { es: "Escriba aquí los detalles de su consulta...", en: "Write the details of your query here..." },
+        submitButton: { es: "Publicar Consulta", en: "Post Query" },
+        emptyForum: { es: "No hay publicaciones todavía. ¡Sé el primero en crear una consulta!", en: "No posts yet. Be the first to create a query!" }
+    },
+
     footer: {
         copyright: { es: "© 2025 Green Lime Technologies. Todos los derechos reservados.", en: "© 2025 Green Lime Technologies. All rights reserved." },
     },

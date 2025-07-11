@@ -19,6 +19,92 @@
     color: var(--text-color);
     font-family: 'Montserrat Regular', sans-serif;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0 auto 40px;
+    /* Aumentado el margen inferior */
     line-height: 1.6;
+}
+
+/* --- Nuevos Estilos para el Foro --- */
+
+/* Formulario para nuevo post */
+.newPostForm {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid var(--greenlime-pantone-7723c);
+    border-radius: 8px;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.newPostForm h2 {
+    font-family: 'Mukata Mahee', sans-serif;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.formInput,
+.formTextarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-family: 'Montserrat Regular', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.submitButton {
+    background-color: var(--greenlime-pantone-7723c);
+    color: #000;
+    border: none;
+    padding: 12px 20px;
+    font-family: 'Mukata Mahee', sans-serif;
+    font-size: 1.1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.submitButton:hover {
+    filter: brightness(1.2);
+}
+
+/* Lista de posts */
+.postsList {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.postItem {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.postTitle {
+    color: var(--greenlime-pantone-7723c);
+    font-family: 'Mukata Mahee', sans-serif;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.postContent {
+    font-family: 'Montserrat Regular', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.emptyForumMessage {
+    text-align: center;
+    padding: 40px 20px;
+    font-family: 'Montserrat Regular', sans-serif;
+    color: var(--text-color);
+    opacity: 0.7;
+    font-style: italic;
 }
