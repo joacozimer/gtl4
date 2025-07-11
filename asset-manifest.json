@@ -1,20 +1,21 @@
 {
   "files": {
-    "main.css": "/gtl4/static/css/main.574bc2ef.css",
-    "main.js": "/gtl4/static/js/main.b4c88451.js",
+    "main.css": "/gtl4/static/css/main.233fdf34.css",
+    "main.js": "/gtl4/static/js/main.d7fc1efc.js",
     "static/media/SobreNosotros.gif": "/gtl4/static/media/SobreNosotros.9e9dafb3cbf0e10855fd.gif",
     "static/media/Services.jpg": "/gtl4/static/media/Services.6a4cf70ac5d8d5065219.jpg",
     "static/media/HandShake.jpg": "/gtl4/static/media/HandShake.fb59f917c5d259a10e70.jpg",
     "static/media/Server.jpg": "/gtl4/static/media/Server.7781f12b8434d34f2412.jpg",
+    "static/media/FondoLogin.jpg": "/gtl4/static/media/FondoLogin.e0a47a21fc965867aef9.jpg",
     "static/media/FondoFooter.png": "/gtl4/static/media/FondoFooter.7c720dc465ac315880c3.png",
     "static/media/GreenLimeWhiteBackground.jpg": "/gtl4/static/media/GreenLimeWhiteBackground.5b7ebcace5de62956451.jpg",
     "static/media/GreenLimeGreyBackground.jpg": "/gtl4/static/media/GreenLimeGreyBackground.b533e625c0deb4cdc5a7.jpg",
     "index.html": "/gtl4/index.html",
-    "main.574bc2ef.css.map": "/gtl4/static/css/main.574bc2ef.css.map",
-    "main.b4c88451.js.map": "/gtl4/static/js/main.b4c88451.js.map"
+    "main.233fdf34.css.map": "/gtl4/static/css/main.233fdf34.css.map",
+    "main.d7fc1efc.js.map": "/gtl4/static/js/main.d7fc1efc.js.map"
   },
   "entrypoints": [
-    "static/css/main.574bc2ef.css",
-    "static/js/main.b4c88451.js"
+    "static/css/main.233fdf34.css",
+    "static/js/main.d7fc1efc.js"
   ]
 }
