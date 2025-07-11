@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './Contact.module.css';
 import texts from '../../data/texts';
-import handshakeImg from '../../assets/images/HandShake.jpg'; // Importa la imagen
+import handshakeImg from '../../assets/images/HandShake.jpg';
 import { FaUser, FaEnvelope, FaTag, FaQuestionCircle, FaCommentDots } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -16,8 +16,8 @@ const ContactPage = ({ language }) => {
         reason: '',
         message: ''
     });
-    const [serverStatus, setServerStatus] = useState('Verificando...');
-    const [serverIsOnline, setServerIsOnline] = useState(false);
+    const [serverStatus, setServerStatus] = useState('Verificando...'); // Se mantiene la lógica
+    const [serverIsOnline, setServerIsOnline] = useState(false); // Se mantiene la lógica
     const serverOfflineAlertShown = useRef(false);
     const intervalRef = useRef(null);
 
@@ -59,6 +59,7 @@ const ContactPage = ({ language }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // La lógica para verificar si el servidor está en línea antes de enviar se mantiene
         if (!serverIsOnline) {
             MySwal.fire({
                 icon: 'error',
@@ -195,9 +196,12 @@ const ContactPage = ({ language }) => {
                         </div>
                     </div>
 
+                    {/* ESTE ES EL DIV QUE SE HA ELIMINADO */}
+                    {/*
                     <div className={`${styles.serverStatus} ${serverIsOnline ? styles.online : styles.offline}`}>
                         {serverStatus}
                     </div>
+                    */}
 
                     <button type="submit" className={styles.submitButton}>
                         {texts.contactPage.form.submit[language]}
