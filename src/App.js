@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 import './App.css';
 import './styles/colors.module.css';
@@ -39,7 +39,9 @@ function App() {
 
       <main>
         <Routes>
-          <Route path="/" element={<HomePage language={language} />} />
+          {/* Redirect from '/' to '/home' */}
+          <Route path="/" element={<Navigate to="/home" replace />} />
+          <Route path="/home" element={<HomePage language={language} />} />
           <Route path="/services" element={<ServicesPage language={language} />} />
           <Route path="/about-us" element={<AboutUsPage language={language} />} />
           <Route path="/community" element={<CommunityPage language={language} />} />

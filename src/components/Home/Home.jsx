@@ -21,12 +21,8 @@ const HomePage = ({ language }) => {
             if (!startTime) {
                 startTime = currentTime;
             }
-
             const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1); // Asegura que el progreso no exceda 1
-
-            // Función de easing (ej. easeInOutQuad para un inicio y fin suaves)
-            // Puedes cambiar esto por otras funciones de easing si quieres otro efecto
+            const progress = Math.min(elapsed / duration, 1);
             const easeInOutQuad = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
             const easedProgress = easeInOutQuad(progress);
 

@@ -112,7 +112,7 @@ const Navbar = ({ language, toggleLanguage, theme, toggleTheme }) => {
 
             {/* Desktop Navigation List (visible on desktop, hidden on mobile) */}
             <ul className={styles.desktopNavList}>
-                <li><Link to="/" className={styles.navLink} onClick={handleLinkClick}><FaHome className={styles.navIcon} />{texts.navbar.home[language]}</Link></li>
+                <li><Link to="/home" className={styles.navLink} onClick={handleLinkClick}><FaHome className={styles.navIcon} />{texts.navbar.home[language]}</Link></li>
                 <li><Link to="/services" className={styles.navLink} onClick={handleLinkClick}><FaTools className={styles.navIcon} />{texts.navbar.services[language]}</Link></li>
                 <li><Link to="/about-us" className={styles.navLink} onClick={handleLinkClick}><FaInfoCircle className={styles.navIcon} />{texts.navbar.aboutUs[language]}</Link></li>
                 <li><Link to="/community" className={styles.navLink} onClick={handleLinkClick}><FaUsers className={styles.navIcon} />{texts.navbar.community[language]}</Link></li>
@@ -154,7 +154,7 @@ const Navbar = ({ language, toggleLanguage, theme, toggleTheme }) => {
             {/* Mobile Overlay Navigation List (hidden on desktop, visible when toggled on mobile) */}
             <ul className={`${styles.mobileNavOverlay} ${showMobileMenu ? styles.active : ''}`} ref={mobileMenuRef}>
                 {/* All nav links for mobile */}
-                <li><Link to="/" className={styles.navLink} onClick={handleLinkClick}><FaHome className={styles.navIcon} />{texts.navbar.home[language]}</Link></li>
+                <li><Link to="/home" className={styles.navLink} onClick={handleLinkClick}><FaHome className={styles.navIcon} />{texts.navbar.home[language]}</Link></li>
                 <li><Link to="/services" className={styles.navLink} onClick={handleLinkClick}><FaTools className={styles.navIcon} />{texts.navbar.services[language]}</Link></li>
                 <li><Link to="/about-us" className={styles.navLink} onClick={handleLinkClick}><FaInfoCircle className={styles.navIcon} />{texts.navbar.aboutUs[language]}</Link></li>
                 <li><Link to="/community" className={styles.navLink} onClick={handleLinkClick}><FaUsers className={styles.navIcon} />{texts.navbar.community[language]}</Link></li>
