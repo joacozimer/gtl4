@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/gtl4/static/css/main.041916bf.css",
-    "main.js": "/gtl4/static/js/main.c7bb415d.js",
+    "main.css": "/gtl4/static/css/main.574bc2ef.css",
+    "main.js": "/gtl4/static/js/main.b4c88451.js",
     "static/media/SobreNosotros.gif": "/gtl4/static/media/SobreNosotros.9e9dafb3cbf0e10855fd.gif",
     "static/media/Services.jpg": "/gtl4/static/media/Services.6a4cf70ac5d8d5065219.jpg",
     "static/media/HandShake.jpg": "/gtl4/static/media/HandShake.fb59f917c5d259a10e70.jpg",
@@ -10,11 +10,11 @@
     "static/media/GreenLimeWhiteBackground.jpg": "/gtl4/static/media/GreenLimeWhiteBackground.5b7ebcace5de62956451.jpg",
     "static/media/GreenLimeGreyBackground.jpg": "/gtl4/static/media/GreenLimeGreyBackground.b533e625c0deb4cdc5a7.jpg",
     "index.html": "/gtl4/index.html",
-    "main.041916bf.css.map": "/gtl4/static/css/main.041916bf.css.map",
-    "main.c7bb415d.js.map": "/gtl4/static/js/main.c7bb415d.js.map"
+    "main.574bc2ef.css.map": "/gtl4/static/css/main.574bc2ef.css.map",
+    "main.b4c88451.js.map": "/gtl4/static/js/main.b4c88451.js.map"
   },
   "entrypoints": [
-    "static/css/main.041916bf.css",
-    "static/js/main.c7bb415d.js"
+    "static/css/main.574bc2ef.css",
+    "static/js/main.b4c88451.js"
   ]
 }
