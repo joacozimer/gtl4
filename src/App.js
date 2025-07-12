@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'; // Importa el proveedor
 
 import './App.css';
 import './styles/colors.module.css'; // Ensure this file also has your dark mode variables
@@ -25,37 +26,42 @@ function App() {
   };
 
   useEffect(() => {
-    // This correctly applies the 'light' or 'dark' class to the body
-    document.body.className = theme;
-  }, [theme]); // Dependency on 'theme' ensures this runs whenever theme changes
+    document.body.classList.remove('light', 'dark');
+    document.body.classList.add(theme);
+  }, [theme]);
+  
 
   return (
-    <Router>
-      <Navbar
-        language={language}
-        toggleLanguage={toggleLanguage}
-        theme={theme}
-        toggleTheme={toggleTheme}
-      />
+    // Envuelve toda la aplicación con GoogleReCaptchaProvider
+    // Reemplaza "TU_CLAVE_DE_SITIO_RECAPTCHA_AQUI" con tu clave de sitio (pública)
+    <GoogleReCaptchaProvider reCaptchaKey="6Lev8X8rAAAAAJzvUUQssasVnbKGm1dtxgxI10L1">
+      <Router>
+        <Navbar
+          language={language}
+          toggleLanguage={toggleLanguage}
+          theme={theme}
+          toggleTheme={toggleTheme}
+        />
 
-      <main>
-        <Routes>
-          <Route path="/" element={<Navigate to="/home" replace />} />
-          <Route path="/home" element={<HomePage language={language} />} />
-          <Route path="/services" element={<ServicesPage language={language} />} />
-          <Route path="/about-us" element={<AboutUsPage language={language} />} />
-          {/*<Route path="/community" element={<CommunityPage language={language} />} />*/}
-          <Route path="/contact" element={<ContactPage language={language} />} />
-          {/* CAMBIO: Renderizar EmployeeLogin y pasar las props language Y theme */}
-          <Route
-            path="/employee-login"
-            element={<EmployeeLogin language={language} theme={theme} />}
-          />
-        </Routes>
-      </main>
+        <main>
+          <Routes>
+            <Route path="/" element={<Navigate to="/home" replace />} />
+            <Route path="/home" element={<HomePage language={language} />} />
+            <Route path="/services" element={<ServicesPage language={language} />} />
+            <Route path="/about-us" element={<AboutUsPage language={language} />} />
+            {/*<Route path="/community" element={<CommunityPage language={language} />} />*/}
+            <Route path="/contact" element={<ContactPage language={language} />} />
+            {/* CAMBIO: Renderizar EmployeeLogin y pasar las props language Y theme */}
+            <Route
+              path="/employee-login"
+              element={<EmployeeLogin language={language} theme={theme} />}
+            />
+          </Routes>
+        </main>
 
-      <Footer language={language} />
-    </Router>
+        <Footer language={language} />
+      </Router>
+    </GoogleReCaptchaProvider>
   );
 }
 

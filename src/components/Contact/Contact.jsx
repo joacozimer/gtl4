@@ -5,6 +5,7 @@ import handshakeImg from '../../assets/images/HandShake.jpg';
 import { FaUser, FaEnvelope, FaTag, FaQuestionCircle, FaCommentDots } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'; // Importa el hook de reCAPTCHA
 
 const MySwal = withReactContent(Swal);
 
@@ -16,10 +17,13 @@ const ContactPage = ({ language }) => {
         reason: '',
         message: ''
     });
-    const [serverStatus, setServerStatus] = useState('Verificando...'); // Se mantiene la lógica
-    const [serverIsOnline, setServerIsOnline] = useState(false); // Se mantiene la lógica
+    const [serverStatus, setServerStatus] = useState('Verificando...');
+    const [serverIsOnline, setServerIsOnline] = useState(false);
     const serverOfflineAlertShown = useRef(false);
     const intervalRef = useRef(null);
+
+    // Obtiene la función executeRecaptcha del hook
+    const { executeRecaptcha } = useGoogleReCaptcha();
 
     const BACKEND_URL = 'http://localhost:5000';
 
@@ -59,7 +63,7 @@ const ContactPage = ({ language }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // La lógica para verificar si el servidor está en línea antes de enviar se mantiene
+
         if (!serverIsOnline) {
             MySwal.fire({
                 icon: 'error',
@@ -77,12 +81,52 @@ const ContactPage = ({ language }) => {
             didOpen: () => MySwal.showLoading()
         });
 
+        let recaptchaToken = '';
+        try {
+            // Ejecuta reCAPTCHA para obtener un token
+            if (!executeRecaptcha) {
+                console.error('executeRecaptcha no está disponible.');
+                MySwal.fire({
+                    icon: 'error',
+                    title: 'Error de seguridad',
+                    text: 'No se pudo cargar la verificación de seguridad. Por favor, recarga la página e intenta de nuevo.',
+                    confirmButtonText: 'Cerrar'
+                });
+                return;
+            }
+            recaptchaToken = await executeRecaptcha('contact_form'); // 'contact_form' es una acción que puedes definir
+            if (!recaptchaToken) {
+                throw new Error('No se pudo obtener el token de reCAPTCHA.');
+            }
+        } catch (recaptchaError) {
+            console.error('Error al ejecutar reCAPTCHA:', recaptchaError);
+            MySwal.fire({
+                icon: 'error',
+                title: 'Error de seguridad',
+                text: 'Falló la verificación de seguridad. Por favor, intenta de nuevo.',
+                confirmButtonText: 'Cerrar'
+            });
+            return;
+        }
+
         try {
             const response = await fetch(`${BACKEND_URL}/send-contact-form`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
+                // Envía el token de reCAPTCHA junto con los datos del formulario
+                body: JSON.stringify({ ...formData, recaptchaToken })
             });
+
+            // *** NUEVA LÓGICA PARA MANEJAR EL CÓDIGO 429 ***
+            if (response.status === 429) {
+                MySwal.fire({
+                    icon: 'warning', // Puedes usar 'warning' o 'error'
+                    title: '¡Demasiadas solicitudes!',
+                    text: 'Has enviado demasiadas solicitudes en poco tiempo. Por favor, espera un momento antes de intentarlo de nuevo.',
+                    confirmButtonText: 'Entendido'
+                });
+                return; // Detiene el flujo de la función aquí
+            }
 
             const data = await response.json();
 
@@ -94,12 +138,16 @@ const ContactPage = ({ language }) => {
                     confirmButtonText: 'Ok'
                 });
                 setFormData({ name: '', email: '', subject: '', reason: '', message: '' });
-            } else throw new Error(data.message || 'Error al enviar');
-        } catch {
+            } else {
+                // Maneja el caso en que el servidor rechace el mensaje (ej. por reCAPTCHA fallido u otros errores del servidor)
+                throw new Error(data.message || 'Error al enviar el formulario.');
+            }
+        } catch (error) {
+            console.error('Error al enviar el correo:', error);
             MySwal.fire({
                 icon: 'error',
                 title: 'Error de conexión',
-                text: 'No se pudo conectar con el servidor. Intenta más tarde.',
+                text: error.message || 'No se pudo conectar con el servidor. Intenta más tarde.',
                 confirmButtonText: 'Cerrar'
             });
         }
@@ -195,13 +243,6 @@ const ContactPage = ({ language }) => {
                             ></textarea>
                         </div>
                     </div>
-
-                    {/* ESTE ES EL DIV QUE SE HA ELIMINADO */}
-                    {/*
-                    <div className={`${styles.serverStatus} ${serverIsOnline ? styles.online : styles.offline}`}>
-                        {serverStatus}
-                    </div>
-                    */}
 
                     <button type="submit" className={styles.submitButton}>
                         {texts.contactPage.form.submit[language]}
