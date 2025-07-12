@@ -14,6 +14,27 @@
     /* Asegura que el padding no afecte el ancho total */
 }
 
+/* NEW: Styles for the intro animation logo */
+.introLogo {
+    position: fixed;
+    /* Use fixed to animate it relative to the viewport */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    /* Initial large size, centered */
+    width: 400px;
+    /* Adjust as needed for initial large size */
+    height: auto;
+    object-fit: contain;
+    z-index: 10000;
+    /* Ensure it's on top of everything */
+    opacity: 1;
+    /* Animation for shrinking and moving up */
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    /* Adjust duration to match JS timeout */
+}
+
+
 .imageCard {
     position: absolute;
     top: 0;
@@ -115,5 +136,11 @@
     .description {
         font-size: 1.1em;
         text-align: center;
+    }
+
+    /* Adjust intro logo size for smaller screens */
+    .introLogo {
+        width: 300px;
+        /* Smaller initial size for mobile */
     }
 }

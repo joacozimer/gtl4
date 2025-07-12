@@ -3,8 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.css';
 import texts from '../../data/texts';
 
-import logoLight from '../../assets/images/GreenLimeWhiteBackground.jpg';
-import logoDark from '../../assets/images/GreenLimeGreyBackground.jpg';
+import logoLight from '../../assets/images/GreenLimeWhiteBackground.png';
+import logoDark from '../../assets/images/GreenLimeWhiteBackground.png';
 
 import {
     FaHome,
@@ -20,14 +20,31 @@ import {
     FaBars
 } from 'react-icons/fa';
 
-const Navbar = ({ language, toggleLanguage, theme, toggleTheme }) => {
+// Accept a prop to know if the intro animation is running
+const Navbar = ({ language, toggleLanguage, theme, toggleTheme, isIntroAnimationActive }) => {
     const [showSettingsDropdown, setShowSettingsDropdown] = useState(false);
     const [showMobileMenu, setShowMobileMenu] = useState(false);
+    const [showNavbarContent, setShowNavbarContent] = useState(!isIntroAnimationActive); // Initially hide if animation is active
 
     const settingsMenuRef = useRef(null);
     const mobileMenuRef = useRef(null);
     const hamburgerRef = useRef(null);
     const navigate = useNavigate();
+
+    // Effect to show navbar content after intro animation finishes
+    useEffect(() => {
+        if (!isIntroAnimationActive) {
+            setShowNavbarContent(true);
+        } else {
+            // If animation is active, wait for a duration before showing navbar content
+            const animationDelay = 1500; // Match this to your Home.jsx animation duration
+            const timer = setTimeout(() => {
+                setShowNavbarContent(true);
+            }, animationDelay);
+            return () => clearTimeout(timer);
+        }
+    }, [isIntroAnimationActive]);
+
 
     // Effect to close dropdowns when clicking outside
     useEffect(() => {
@@ -95,7 +112,7 @@ const Navbar = ({ language, toggleLanguage, theme, toggleTheme }) => {
     };
 
     return (
-        <nav className={styles.navbar}>
+        <nav className={`${styles.navbar} ${showNavbarContent ? styles.visible : ''}`}>
             <div className={styles.logoContainer}>
                 <Link to="/" onClick={handleLinkClick}>
                     <img

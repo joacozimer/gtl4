@@ -9,7 +9,7 @@ const texts = {
         settings: {
             darkMode: { es: "Modo Oscuro", en: "Dark Mode" },
             lightMode: { es: "Modo Claro", en: "Light Mode" },
-            employeeAccess: { es: "Acceso Empleados", en: "Employee Access" },
+            employeeAccess: { es: "Acceso Privado", en: "Private Access" },
             language: { es: "Idioma", en: "Language" },
             languageToggleEsToEn: { es: "Traducir a Inglés", en: "Translate to English" },
             languageToggleEnToEs: { es: "Traducir a Español", en: "Translate to Spanish" },
@@ -79,7 +79,7 @@ We specialize in the design and implementation of simple and efficient solutions
 
     // CAMBIO: Nueva sección para textos de login
     employeeLogin: {
-        title: { es: "Acceso a Empleados", en: "Employee Access" },
+        title: { es: "Acceso a Privado", en: "Private Access" },
         emailPlaceholder: { es: "Correo Electrónico @greenlimetech.com", en: "Email @greenlimetech.com" },
         passwordPlaceholder: { es: "Contraseña", en: "Password" },
         loginButton: { es: "Iniciar Sesión", en: "Log In" },

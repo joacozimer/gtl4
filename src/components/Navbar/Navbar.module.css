@@ -8,7 +8,8 @@
     background-color: var(--navbar-bg);
     color: var(--navbar-text);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+    transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, opacity 0.5s ease-in-out;
+    /* Add opacity transition */
     position: fixed;
     top: 20px;
     left: 50%;
@@ -17,7 +18,18 @@
     border-radius: 15px;
     width: calc(100% - 40px);
     max-width: 1200px;
+    opacity: 0;
+    /* Initially hidden */
+    visibility: hidden;
+    /* Ensure it's not clickable when hidden */
 }
+
+.navbar.visible {
+    opacity: 1;
+    /* Fade in when visible */
+    visibility: visible;
+}
+
 
 .logoContainer {
     display: flex;
@@ -28,18 +40,11 @@
 
 .logo {
     display: block;
-    height: 48px;
+    height: 90px;
     width: auto;
-    max-width: 140px;
+    max-width: 200px;
     object-fit: contain;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.logo:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10%;
 }
 
 /* Estilos para la lista de navegación de escritorio */
@@ -116,7 +121,7 @@
     right: 0;
     background-color: var(--dropdown-bg);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-    min-width: 250px;
+    min-width: 350px;
     max-width: 300px;
     border-radius: 15px;
     overflow: hidden;
@@ -138,7 +143,6 @@
 .dropdownItem {
     color: var(--dropdown-text);
     padding: 14px 20px;
-    /* Aumentado significativamente el padding para más altura */
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -164,12 +168,9 @@
 .dropdownItemIcon {
     margin-right: 12px;
     font-size: 1.1em;
-    color: var(--greenlime-pantone-7723c);
+    color: var(--dropdown-text);
     transition: color 0.3s ease;
 }
-
-/* --- Fin de modificaciones --- */
-
 
 /* Hamburger menu for mobile - initially hidden */
 .hamburgerMenu {
