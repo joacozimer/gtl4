@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styles from './Contact.module.css';
 import texts from '../../data/texts';
 import handshakeImg from '../../assets/images/Saludo.jpg';
+import logoImg from '../../assets/images/Logo.png';
 import { FaUser, FaEnvelope, FaCommentDots } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
@@ -15,7 +16,7 @@ const ContactPage = ({ language }) => {
         email: '',
         message: ''
     });
-    // Se mantienen serverStatus y serverIsOnline para la lógica interna, pero no se mostrarán
+
     const [serverStatus, setServerStatus] = useState('Verificando...');
     const [serverIsOnline, setServerIsOnline] = useState(false);
     const serverOfflineAlertShown = useRef(false);
@@ -23,7 +24,7 @@ const ContactPage = ({ language }) => {
 
     const { executeRecaptcha } = useGoogleReCaptcha();
 
-    const BACKEND_URL = 'http://localhost:5000'; //poner el dominio donde esta el server
+    const BACKEND_URL = 'http://localhost:5000';
 
     const checkServerStatus = async () => {
         try {
@@ -58,13 +59,11 @@ const ContactPage = ({ language }) => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-
         if (
             (name === 'name' && value.length > 100) ||
             (name === 'email' && value.length > 100) ||
             (name === 'message' && value.length > 2000)
         ) return;
-
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
@@ -98,12 +97,29 @@ const ContactPage = ({ language }) => {
             return;
         }
 
+        // ✅ ALERTA ANIMADA
+        const loadingText = "Enviando...";
+        const animatedLoadingText = loadingText.split('').map((char, index) => (
+            `<span key=${index}>${char}</span>`
+        )).join('');
+
         MySwal.fire({
-            title: 'Enviando...',
-            text: 'Por favor, espera.',
+            html: `
+                <div class="${styles['loader-container']}">
+                    <img src="${logoImg}" alt="Cargando..." class="${styles.loader}" />
+                    <div class="${styles['loading-text']}">${animatedLoadingText}</div>
+                    <div class="${styles['progress-bar']}"></div>
+                </div>
+            `,
+            showConfirmButton: false,
             allowOutsideClick: false,
-            didOpen: () => MySwal.showLoading(),
+            backdrop: true,
+            allowEscapeKey: false,
+            customClass: {
+                popup: styles['swal-custom-popup'] // Add a custom class for the popup if needed for global styling
+            }
         });
+
 
         let recaptchaToken = '';
         try {
@@ -168,7 +184,6 @@ const ContactPage = ({ language }) => {
                     <div className={styles.overlay}>
                         <h1 className={styles.title}>{texts.contactPage.title[language]}</h1>
                         <p className={styles.description}>{texts.contactPage.description[language]}</p>
-                        {/* Se eliminó la línea que mostraba el serverStatus */}
                     </div>
                 </div>
 
