@@ -58,7 +58,8 @@
 
 .navLink {
     text-decoration: none;
-    color: var(--navbar-text);
+    color: var(--greenlime-pantone-7723c);
+    /* Color por defecto: verde oscuro */
     font-weight: 500;
     font-family: 'Montserrat Regular', sans-serif;
     transition: color 0.3s ease, transform 0.3s ease-out, background-color 0.3s ease;
@@ -70,7 +71,8 @@
 }
 
 .navLink:hover {
-    color: var(--greenlime-pantone-7723c);
+    color: var(--greenlime-pantone-585c);
+    /* Color al pasar el ratón: verde claro */
     transform: translateX(4px);
     background-color: rgba(255, 255, 255, 0.1);
 }
@@ -78,12 +80,14 @@
 .navIcon {
     margin-right: 8px;
     font-size: 1.1em;
-    color: var(--greenlime-pantone-431c);
+    color: var(--greenlime-pantone-7723c);
+    /* Color por defecto del icono: verde oscuro */
     transition: color 0.3s ease;
 }
 
 .navLink:hover .navIcon {
-    color: var(--greenlime-pantone-7723c);
+    color: var(--greenlime-pantone-585c);
+    /* Color del icono al pasar el ratón: verde claro */
 }
 
 /* Desktop Settings Menu (Gear Icon and its Dropdown) */
@@ -93,7 +97,8 @@
     display: flex;
     align-items: center;
     font-size: 1.4em;
-    color: var(--greenlime-pantone-431c);
+    color: var(--greenlime-pantone-4311c);
+    /* Puedes mantener este si quieres que el icono de engranaje sea diferente */
     transition: color 0.3s ease;
     padding: 8px;
     border-radius: 8px;
@@ -141,7 +146,8 @@
 }
 
 .dropdownItem {
-    color: var(--dropdown-text);
+    color: var(--greenlime-pantone-7723c);
+    /* Color por defecto: verde oscuro */
     padding: 14px 20px;
     text-decoration: none;
     display: flex;
@@ -155,12 +161,14 @@
 }
 
 .dropdownContent a.dropdownItem {
-    color: var(--dropdown-text);
+    color: var(--greenlime-pantone-7723c);
+    /* Color por defecto: verde oscuro */
 }
 
 .dropdownItem:hover {
     background-color: var(--dropdown-hover-bg);
-    color: var(--greenlime-pantone-7723c);
+    color: var(--greenlime-pantone-585c);
+    /* Color al pasar el ratón: verde claro */
     transform: translateX(4px);
     border-radius: 15px;
 }
@@ -168,9 +176,17 @@
 .dropdownItemIcon {
     margin-right: 12px;
     font-size: 1.1em;
-    color: var(--dropdown-text);
+    color: var(--greenlime-pantone-7723c);
+    /* Color por defecto del icono: verde oscuro */
     transition: color 0.3s ease;
 }
+
+.dropdownItem:hover .dropdownItemIcon {
+    /* Añadido: estilo hover para el icono */
+    color: var(--greenlime-pantone-585c);
+    /* Color del icono al pasar el ratón: verde claro */
+}
+
 
 /* Hamburger menu for mobile - initially hidden */
 .hamburgerMenu {
@@ -227,11 +243,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--greenlime-pantone-7723c);
+    /* Color por defecto en móvil: verde oscuro */
 }
 
 .mobileNavOverlay li .navLink:hover {
     background-color: rgba(255, 255, 255, 0.07);
-    color: var(--greenlime-pantone-7723c);
+    color: var(--greenlime-pantone-585c);
+    /* Color al pasar el ratón en móvil: verde claro */
     transform: translateX(4px);
 }
 
@@ -243,22 +262,33 @@
     padding: 14px 25px;
     /* Aumentado significativamente el padding para más altura */
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--dropdown-text);
+    color: var(--greenlime-pantone-7723c);
+    /* Color por defecto: verde oscuro */
     cursor: pointer;
     transition: background-color 0.4s ease, color 0.4s ease, transform 0.3s ease;
 }
 
 .mobileSettingItem:hover {
     background-color: rgba(255, 255, 255, 0.07);
-    color: var(--greenlime-pantone-7723c);
+    color: var(--greenlime-pantone-585c);
+    /* Color al pasar el ratón: verde claro */
     transform: translateX(4px);
 }
 
 .mobileSettingItem .dropdownItemIcon {
     margin-right: 12px;
     font-size: 1.2em;
-    color: var(--dropdown-text);
+    color: var(--greenlime-pantone-7723c);
+    /* Color por defecto del icono: verde oscuro */
+    transition: color 0.3s ease;
 }
+
+.mobileSettingItem:hover .dropdownItemIcon {
+    /* Añadido: estilo hover para el icono en móvil */
+    color: var(--greenlime-pantone-585c);
+    /* Color del icono al pasar el ratón: verde claro */
+}
+
 
 /* Media Queries for Responsive Design */
 @media (max-width: 768px) {

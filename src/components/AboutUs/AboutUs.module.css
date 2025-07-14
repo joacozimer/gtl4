@@ -16,30 +16,37 @@
     top: 0;
     left: 0;
     width: 100%;
+    /* El contenedor de la imagen mantiene su ancho al 100% */
     height: 100%;
     z-index: 0;
     overflow: hidden;
+    /* Esto es crucial para ocultar las partes de la imagen que se desbordan */
     border-radius: 20px;
 }
 
 .backgroundGif {
-    width: 100%;
-    height: 100%;
+    width: 120%;
+    /* La imagen es ahora un 20% más ancha que su contenedor */
+    height: 140%;
+    /* La imagen es ahora un 20% más alta que su contenedor */
     object-fit: cover;
+    /* Mantiene la relación de aspecto y cubre el área */
     filter: brightness(0.7);
     border-radius: 20px;
-    /* importante para mantener bordes */
     animation: backgroundPan 20s infinite alternate ease-in-out;
 }
 
-/* ahora animamos solo translateX, sin escalar */
+/* Animación para desplazar la imagen dentro de su contenedor en X y Y */
 @keyframes backgroundPan {
     0% {
-        transform: translateX(0);
+        transform: translate(0, 0);
+        /* Empieza mostrando la esquina superior izquierda de la imagen */
     }
 
     100% {
-        transform: translateX(-10%);
+        /* Se mueve la imagen un 20% a la izquierda y un 20% hacia arriba, mostrando la esquina inferior derecha */
+        transform: translate(-20%, -20%);
+        /* El 20% es la diferencia entre el 120% de la imagen y el 100% del contenedor */
     }
 }
 
@@ -82,7 +89,7 @@
 .cardText {
     background-color: rgba(255, 255, 255, 0.85);
     border-radius: 12px;
-    padding: 30px;
+    padding: 30px 100px;
     max-width: 800px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     opacity: 0;

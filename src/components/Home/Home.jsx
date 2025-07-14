@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import styles from './Home.module.css';
 import texts from '../../data/texts'; // Asegúrate de que esta ruta sea correcta
 import ServerImage from '../../assets/images/Server.jpg'; // Asegúrate de que esta ruta sea correcta
+import GreenLimeLogo from '../../assets/images/GreenLimeWhiteBackground.png';
 
 const HomePage = ({ language }) => {
     const homeContainerRef = useRef(null);
@@ -45,11 +46,13 @@ const HomePage = ({ language }) => {
                 <img src={ServerImage} alt="Server Background" className={styles.imageBackground} />
             </div>
 
-            {/* Tarjeta de Texto (Superpuesta) */}
             <div className={styles.textCard}>
-                <h1 className={styles.title}>
-                    {texts.homePage.title[language]}
-                </h1>
+                {/* Reemplazamos el h1 con la imagen del logo */}
+                <img
+                    src={GreenLimeLogo}
+                    alt="Green Lime Technologies Logo"
+                    className={styles.greenLimeLogo} // Asegúrate de definir este estilo en Home.module.css
+                />
                 <p className={styles.description}>
                     {texts.homePage.description[language]}
                 </p>

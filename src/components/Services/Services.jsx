@@ -19,28 +19,35 @@ const ServicesPage = ({ language }) => {
                 </div>
             </div>
 
-            <div className={styles.servicesGrid}>
-                <div className={styles.serviceCard}>
-                    <h2>{texts.servicesPage.sections.firmwareUpdate.title[language]}</h2>
-                    <p>{texts.servicesPage.sections.firmwareUpdate.content[language]}</p>
-                </div>
-                <div className={styles.serviceCard}>
-                    <h2>{texts.servicesPage.sections.firmwareImplementation.title[language]}</h2>
-                    <p>{texts.servicesPage.sections.firmwareImplementation.content[language]}</p>
-                </div>
-                <div className={styles.serviceCard}>
-                    <h2>{texts.servicesPage.sections.hardwareCompatibility.title[language]}</h2>
-                    <p>{texts.servicesPage.sections.hardwareCompatibility.content[language]}</p>
-                </div>
-                <div className={styles.serviceCard}>
-                    <h2>{texts.servicesPage.sections.securityEnhancements.title[language]}</h2>
-                    <p>{texts.servicesPage.sections.securityEnhancements.content[language]}</p>
-                </div>
-            </div>
+            {/* Nuevo título para los servicios clave */}
+            <h2 className={styles.newServicesSectionTitle}>
+                {texts.servicesPage.sections.newServices.title[language]}
+            </h2>
 
-            <div className={styles.expertiseSection}>
-                <h2>{texts.servicesPage.firmwareService.title[language]}</h2>
-                <p>{texts.servicesPage.firmwareService.content[language]}</p>
+            <div className={styles.servicesGrid}>
+                {/* Ahora solo se renderizan los "Nuevos servicios" */}
+                {texts.servicesPage.sections.newServices.items.map((service, index) => (
+                    <div className={styles.serviceCard} key={index}>
+                        <h2>
+                            <span className={styles.emoji}>{service.icon}</span>
+                            {service.title[language]}
+                        </h2>
+                        {service.content ? (
+                            <p>{service.content[language]}</p>
+                        ) : (
+                            // Renderiza sub-elementos si existen
+                            <ul className={styles.subServiceList}>
+                                {service.subItems.map((subItem, subIndex) => (
+                                    <li key={subIndex}>{subItem[language]}</li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+                ))}
+            </div>
+            <div className={styles.commitmentSection}>
+                <h2>{texts.servicesPage.commitment.title[language]}</h2>
+                <p>{texts.servicesPage.commitment.content[language]}</p>
             </div>
         </div>
     );

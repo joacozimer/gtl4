@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import styles from './Contact.module.css';
 import texts from '../../data/texts';
 import handshakeImg from '../../assets/images/HandShake.jpg';
-import { FaUser, FaEnvelope, FaTag, FaQuestionCircle, FaCommentDots } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaCommentDots } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
@@ -13,10 +13,9 @@ const ContactPage = ({ language }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        subject: '',
-        reason: '',
         message: ''
     });
+    // Se mantienen serverStatus y serverIsOnline para la lógica interna, pero no se mostrarán
     const [serverStatus, setServerStatus] = useState('Verificando...');
     const [serverIsOnline, setServerIsOnline] = useState(false);
     const serverOfflineAlertShown = useRef(false);
@@ -63,8 +62,6 @@ const ContactPage = ({ language }) => {
         if (
             (name === 'name' && value.length > 100) ||
             (name === 'email' && value.length > 100) ||
-            (name === 'subject' && value.length > 150) ||
-            (name === 'reason' && value.length > 50) ||
             (name === 'message' && value.length > 2000)
         ) return;
 
@@ -74,7 +71,7 @@ const ContactPage = ({ language }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!formData.name.trim() || !formData.email.trim() || !formData.subject.trim() || !formData.reason.trim() || !formData.message.trim()) {
+        if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
             MySwal.fire({
                 icon: 'warning',
                 title: 'Campos incompletos',
@@ -146,7 +143,7 @@ const ContactPage = ({ language }) => {
                     title: '¡Éxito!',
                     text: 'Mensaje enviado con éxito. Te responderemos pronto.',
                 });
-                setFormData({ name: '', email: '', subject: '', reason: '', message: '' });
+                setFormData({ name: '', email: '', message: '' });
             } else {
                 throw new Error(data.message || 'Error al enviar el formulario.');
             }
@@ -171,7 +168,7 @@ const ContactPage = ({ language }) => {
                     <div className={styles.overlay}>
                         <h1 className={styles.title}>{texts.contactPage.title[language]}</h1>
                         <p className={styles.description}>{texts.contactPage.description[language]}</p>
-                        <p><strong>{serverStatus}</strong></p>
+                        {/* Se eliminó la línea que mostraba el serverStatus */}
                     </div>
                 </div>
 
@@ -203,40 +200,6 @@ const ContactPage = ({ language }) => {
                                 required
                                 maxLength={100}
                             />
-                        </div>
-                    </div>
-
-                    <div className={styles.formGroup}>
-                        <div className={styles.inputWrapper}>
-                            <FaTag className={styles.inputIcon} />
-                            <input
-                                type="text"
-                                name="subject"
-                                placeholder="Asunto"
-                                value={formData.subject}
-                                onChange={handleChange}
-                                required
-                                maxLength={150}
-                            />
-                        </div>
-                    </div>
-
-                    <div className={styles.formGroup}>
-                        <div className={styles.inputWrapper}>
-                            <FaQuestionCircle className={styles.inputIcon} />
-                            <select
-                                name="reason"
-                                className={styles.selectField}
-                                value={formData.reason}
-                                onChange={handleChange}
-                                required
-                            >
-                                <option value="" disabled>Motivo de Contacto</option>
-                                <option value="general">Consulta General</option>
-                                <option value="support">Soporte Técnico</option>
-                                <option value="billing">Facturación</option>
-                                <option value="other">Otro</option>
-                            </select>
                         </div>
                     </div>
 
