@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/app/static/css/main.450cb87c.css",
-    "main.js": "/app/static/js/main.4633eefc.js",
+    "main.css": "/app/static/css/main.5362a062.css",
+    "main.js": "/app/static/js/main.07d499de.js",
     "static/media/Services.jpg": "/app/static/media/Services.6a4cf70ac5d8d5065219.jpg",
     "static/media/Server.jpg": "/app/static/media/Server.7781f12b8434d34f2412.jpg",
     "static/media/Nosotros .jpg": "/app/static/media/Nosotros .1ca464f0369f398b6a64.jpg",
@@ -11,12 +11,13 @@
     "static/media/Saludo.jpg": "/app/static/media/Saludo.139a073c76a176c331f5.jpg",
     "static/media/GreenLimeWhiteBackground.jpg": "/app/static/media/GreenLimeWhiteBackground.b283c663d01614b40756.jpg",
     "static/media/GreenLimeGreyBackground.jpg": "/app/static/media/GreenLimeGreyBackground.b533e625c0deb4cdc5a7.jpg",
+    "static/media/Logo.png": "/app/static/media/Logo.36cf0a36ff6dd9ad5272.png",
     "index.html": "/app/index.html",
-    "main.450cb87c.css.map": "/app/static/css/main.450cb87c.css.map",
-    "main.4633eefc.js.map": "/app/static/js/main.4633eefc.js.map"
+    "main.5362a062.css.map": "/app/static/css/main.5362a062.css.map",
+    "main.07d499de.js.map": "/app/static/js/main.07d499de.js.map"
   },
   "entrypoints": [
-    "static/css/main.450cb87c.css",
-    "static/js/main.4633eefc.js"
+    "static/css/main.5362a062.css",
+    "static/js/main.07d499de.js"
   ]
 }
