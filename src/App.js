@@ -12,12 +12,11 @@ import AboutUsPage from './components/AboutUs/AboutUs';
 import ContactPage from './components/Contact/Contact';
 import EmployeeLogin from './components/EmployeeLogin/EmployeeLogin';
 
-import ScrollToTop from './components/ScrollToTop'; // <--- NUEVO: Importa ScrollToTop
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const [language, setLanguage] = useState('es');
   const [theme, setTheme] = useState('light');
-  // NUEVO: Estado para controlar si la animación de intro está activa
   const [isIntroAnimationActive, setIsIntroAnimationActive] = useState(true);
 
   const toggleLanguage = () => {
@@ -33,18 +32,15 @@ function App() {
     document.body.classList.add(theme);
   }, [theme]);
 
-  // Función para manejar la finalización de la animación de introducción
   const handleIntroAnimationComplete = (completed) => {
-    setIsIntroAnimationActive(!completed); // Establece a false cuando la animación termina
+    setIsIntroAnimationActive(!completed);
   };
 
   return (
     <GoogleReCaptchaProvider reCaptchaKey="6Lev8X8rAAAAAJzvUUQssasVnbKGm1dtxgxI10L1">
       <Router basename='/app'>
-        {/* NUEVO: Renderiza el componente ScrollToTop aquí */}
         <ScrollToTop />
 
-        {/* Pasar isIntroAnimationActive a Navbar */}
         <Navbar
           language={language}
           toggleLanguage={toggleLanguage}
@@ -67,6 +63,7 @@ function App() {
               path="/employee-login"
               element={<EmployeeLogin language={language} theme={theme} />}
             />
+            <Route path="*" element={<Navigate to="/home" replace />} />
           </Routes>
         </main>
 
