@@ -5,7 +5,7 @@ import handshakeImg from '../../assets/images/HandShake.jpg';
 import { FaUser, FaEnvelope, FaTag, FaQuestionCircle, FaCommentDots } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'; // Importa el hook de reCAPTCHA
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 const MySwal = withReactContent(Swal);
 
@@ -22,10 +22,9 @@ const ContactPage = ({ language }) => {
     const serverOfflineAlertShown = useRef(false);
     const intervalRef = useRef(null);
 
-    // Obtiene la función executeRecaptcha del hook
     const { executeRecaptcha } = useGoogleReCaptcha();
 
-    const BACKEND_URL = 'http://localhost:5000';
+    const BACKEND_URL = 'http://localhost:5000'; //poner el dominio donde esta el server
 
     const checkServerStatus = async () => {
         try {
@@ -52,24 +51,52 @@ const ContactPage = ({ language }) => {
 
     useEffect(() => {
         checkServerStatus();
-        intervalRef.current = setInterval(checkServerStatus, 5000);
+        intervalRef.current = setInterval(checkServerStatus, 10000);
         return () => clearInterval(intervalRef.current);
     }, []);
 
+    const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
+
+        if (
+            (name === 'name' && value.length > 100) ||
+            (name === 'email' && value.length > 100) ||
+            (name === 'subject' && value.length > 150) ||
+            (name === 'reason' && value.length > 50) ||
+            (name === 'message' && value.length > 2000)
+        ) return;
+
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        if (!formData.name.trim() || !formData.email.trim() || !formData.subject.trim() || !formData.reason.trim() || !formData.message.trim()) {
+            MySwal.fire({
+                icon: 'warning',
+                title: 'Campos incompletos',
+                text: 'Por favor, completa todos los campos.',
+            });
+            return;
+        }
+
+        if (!isValidEmail(formData.email)) {
+            MySwal.fire({
+                icon: 'warning',
+                title: 'Email inválido',
+                text: 'Por favor, ingresa un correo válido.',
+            });
+            return;
+        }
+
         if (!serverIsOnline) {
             MySwal.fire({
                 icon: 'error',
                 title: 'Servidor desconectado',
                 text: 'No se puede enviar el formulario porque el servidor está fuera de línea.',
-                confirmButtonText: 'Entendido'
             });
             return;
         }
@@ -78,33 +105,19 @@ const ContactPage = ({ language }) => {
             title: 'Enviando...',
             text: 'Por favor, espera.',
             allowOutsideClick: false,
-            didOpen: () => MySwal.showLoading()
+            didOpen: () => MySwal.showLoading(),
         });
 
         let recaptchaToken = '';
         try {
-            // Ejecuta reCAPTCHA para obtener un token
-            if (!executeRecaptcha) {
-                console.error('executeRecaptcha no está disponible.');
-                MySwal.fire({
-                    icon: 'error',
-                    title: 'Error de seguridad',
-                    text: 'No se pudo cargar la verificación de seguridad. Por favor, recarga la página e intenta de nuevo.',
-                    confirmButtonText: 'Cerrar'
-                });
-                return;
-            }
-            recaptchaToken = await executeRecaptcha('contact_form'); // 'contact_form' es una acción que puedes definir
-            if (!recaptchaToken) {
-                throw new Error('No se pudo obtener el token de reCAPTCHA.');
-            }
-        } catch (recaptchaError) {
-            console.error('Error al ejecutar reCAPTCHA:', recaptchaError);
+            if (!executeRecaptcha) throw new Error('reCAPTCHA no disponible');
+            recaptchaToken = await executeRecaptcha('contact_form');
+            if (!recaptchaToken) throw new Error('No se pudo obtener el token de reCAPTCHA.');
+        } catch (err) {
             MySwal.fire({
                 icon: 'error',
                 title: 'Error de seguridad',
-                text: 'Falló la verificación de seguridad. Por favor, intenta de nuevo.',
-                confirmButtonText: 'Cerrar'
+                text: err.message || 'Falló la verificación de seguridad. Intenta nuevamente.',
             });
             return;
         }
@@ -113,19 +126,16 @@ const ContactPage = ({ language }) => {
             const response = await fetch(`${BACKEND_URL}/send-contact-form`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                // Envía el token de reCAPTCHA junto con los datos del formulario
-                body: JSON.stringify({ ...formData, recaptchaToken })
+                body: JSON.stringify({ ...formData, recaptchaToken }),
             });
 
-            // *** NUEVA LÓGICA PARA MANEJAR EL CÓDIGO 429 ***
             if (response.status === 429) {
                 MySwal.fire({
-                    icon: 'warning', // Puedes usar 'warning' o 'error'
+                    icon: 'warning',
                     title: '¡Demasiadas solicitudes!',
-                    text: 'Has enviado demasiadas solicitudes en poco tiempo. Por favor, espera un momento antes de intentarlo de nuevo.',
-                    confirmButtonText: 'Entendido'
+                    text: 'Has enviado demasiadas solicitudes en poco tiempo. Por favor espera un momento.',
                 });
-                return; // Detiene el flujo de la función aquí
+                return;
             }
 
             const data = await response.json();
@@ -135,20 +145,16 @@ const ContactPage = ({ language }) => {
                     icon: 'success',
                     title: '¡Éxito!',
                     text: 'Mensaje enviado con éxito. Te responderemos pronto.',
-                    confirmButtonText: 'Ok'
                 });
                 setFormData({ name: '', email: '', subject: '', reason: '', message: '' });
             } else {
-                // Maneja el caso en que el servidor rechace el mensaje (ej. por reCAPTCHA fallido u otros errores del servidor)
                 throw new Error(data.message || 'Error al enviar el formulario.');
             }
         } catch (error) {
-            console.error('Error al enviar el correo:', error);
             MySwal.fire({
                 icon: 'error',
                 title: 'Error de conexión',
                 text: error.message || 'No se pudo conectar con el servidor. Intenta más tarde.',
-                confirmButtonText: 'Cerrar'
             });
         }
     };
@@ -165,6 +171,7 @@ const ContactPage = ({ language }) => {
                     <div className={styles.overlay}>
                         <h1 className={styles.title}>{texts.contactPage.title[language]}</h1>
                         <p className={styles.description}>{texts.contactPage.description[language]}</p>
+                        <p><strong>{serverStatus}</strong></p>
                     </div>
                 </div>
 
@@ -179,6 +186,7 @@ const ContactPage = ({ language }) => {
                                 value={formData.name}
                                 onChange={handleChange}
                                 required
+                                maxLength={100}
                             />
                         </div>
                     </div>
@@ -193,6 +201,7 @@ const ContactPage = ({ language }) => {
                                 value={formData.email}
                                 onChange={handleChange}
                                 required
+                                maxLength={100}
                             />
                         </div>
                     </div>
@@ -207,6 +216,7 @@ const ContactPage = ({ language }) => {
                                 value={formData.subject}
                                 onChange={handleChange}
                                 required
+                                maxLength={150}
                             />
                         </div>
                     </div>
@@ -240,6 +250,7 @@ const ContactPage = ({ language }) => {
                                 value={formData.message}
                                 onChange={handleChange}
                                 required
+                                maxLength={2000}
                             ></textarea>
                         </div>
                     </div>
