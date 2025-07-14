@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './Contact.module.css';
 import texts from '../../data/texts';
-import handshakeImg from '../../assets/images/HandShake.jpg';
+import handshakeImg from '../../assets/images/Saludo.jpg';
 import { FaUser, FaEnvelope, FaCommentDots } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
