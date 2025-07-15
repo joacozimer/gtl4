@@ -97,7 +97,6 @@ const ContactPage = ({ language }) => {
             return;
         }
 
-        // ✅ ALERTA ANIMADA
         const loadingText = "Enviando...";
         const animatedLoadingText = loadingText.split('').map((char, index) => (
             `<span key=${index}>${char}</span>`
@@ -116,7 +115,7 @@ const ContactPage = ({ language }) => {
             backdrop: true,
             allowEscapeKey: false,
             customClass: {
-                popup: styles['swal-custom-popup'] // Add a custom class for the popup if needed for global styling
+                popup: styles['swal-custom-popup']
             }
         });
 

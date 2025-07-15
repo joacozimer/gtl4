@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './Home.module.css';
-import texts from '../../data/texts'; // Asegúrate de que esta ruta sea correcta
-import ServerImage from '../../assets/images/Server.jpg'; // Asegúrate de que esta ruta sea correcta
+import texts from '../../data/texts';
+import ServerImage from '../../assets/images/Server.jpg';
 import GreenLimeLogo from '../../assets/images/GreenLimeWhiteBackground.png';
 
 const HomePage = ({ language }) => {
@@ -9,13 +9,12 @@ const HomePage = ({ language }) => {
 
     useEffect(() => {
         if (homeContainerRef.current) {
-            // Añade la clase 'loaded' después de que el componente se monte
             homeContainerRef.current.classList.add('loaded');
         }
 
-        const startPosition = window.scrollY; // Posición inicial del scroll
-        const targetPosition = 115; // Posición final deseada
-        const duration = 500; // 0.5 segundos en milisegundos
+        const startPosition = window.scrollY;
+        const targetPosition = 115;
+        const duration = 500;
         let startTime = null;
 
         const animateScroll = (currentTime) => {
@@ -34,24 +33,21 @@ const HomePage = ({ language }) => {
             }
         };
 
-        // Inicia la animación de scroll
         requestAnimationFrame(animateScroll);
 
-    }, []); // El array de dependencias vacío asegura que esto se ejecute solo una vez al montar
+    }, []);
 
     return (
         <div className={styles.homeContainer} ref={homeContainerRef}>
-            {/* Tarjeta de Imagen (Fondo) */}
             <div className={styles.imageCard}>
                 <img src={ServerImage} alt="Server Background" className={styles.imageBackground} />
             </div>
 
             <div className={styles.textCard}>
-                {/* Reemplazamos el h1 con la imagen del logo */}
                 <img
                     src={GreenLimeLogo}
                     alt="Green Lime Technologies Logo"
-                    className={styles.greenLimeLogo} // Asegúrate de definir este estilo en Home.module.css
+                    className={styles.greenLimeLogo}
                 />
                 <p className={styles.description}>
                     {texts.homePage.description[language]}

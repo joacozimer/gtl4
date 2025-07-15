@@ -74,17 +74,17 @@
     border-radius: 10px;
 }
 
-.infoImage {
+.zoomImage {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center center;
     display: block;
     filter: brightness(0.7);
     transition: transform 0.3s ease;
 }
 
-.infoImage:hover {
+.zoomImage:hover {
     transform: scale(1.05);
 }
 
@@ -339,17 +339,14 @@
     color: #444;
     margin-bottom: 20px;
     font-family: sans-serif;
-    /* Add for letter animation */
     display: flex;
 }
 
 .loading-text span {
     animation: letter-bounce 1s infinite alternate;
     display: inline-block;
-    /* Essential for transform to work */
 }
 
-/* Delay for each letter */
 .loading-text span:nth-child(1) {
     animation-delay: 0s;
 }
@@ -394,9 +391,6 @@
     animation-delay: 1.0s;
 }
 
-/* For '...' */
-
-
 @keyframes letter-bounce {
     0% {
         transform: translateY(0);
@@ -406,7 +400,6 @@
         transform: translateY(-5px);
     }
 }
-
 
 .progress-bar {
     width: 200px;

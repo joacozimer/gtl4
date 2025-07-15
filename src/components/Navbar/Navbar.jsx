@@ -10,7 +10,6 @@ import {
     FaHome,
     FaTools,
     FaInfoCircle,
-    // FaUsers, // Eliminado: FaUsers ya no es necesario
     FaEnvelope,
     FaCog,
     FaMoon,
@@ -20,24 +19,21 @@ import {
     FaBars
 } from 'react-icons/fa';
 
-// Accept a prop to know if the intro animation is running
 const Navbar = ({ language, toggleLanguage, theme, toggleTheme, isIntroAnimationActive }) => {
     const [showSettingsDropdown, setShowSettingsDropdown] = useState(false);
     const [showMobileMenu, setShowMobileMenu] = useState(false);
-    const [showNavbarContent, setShowNavbarContent] = useState(!isIntroAnimationActive); // Initially hide if animation is active
+    const [showNavbarContent, setShowNavbarContent] = useState(!isIntroAnimationActive);
 
     const settingsMenuRef = useRef(null);
     const mobileMenuRef = useRef(null);
     const hamburgerRef = useRef(null);
     const navigate = useNavigate();
 
-    // Effect to show navbar content after intro animation finishes
     useEffect(() => {
         if (!isIntroAnimationActive) {
             setShowNavbarContent(true);
         } else {
-            // If animation is active, wait for a duration before showing navbar content
-            const animationDelay = 1500; // Match this to your Home.jsx animation duration
+            const animationDelay = 1500;
             const timer = setTimeout(() => {
                 setShowNavbarContent(true);
             }, animationDelay);
@@ -45,15 +41,11 @@ const Navbar = ({ language, toggleLanguage, theme, toggleTheme, isIntroAnimation
         }
     }, [isIntroAnimationActive]);
 
-
-    // Effect to close dropdowns when clicking outside
     useEffect(() => {
         function handleClickOutside(event) {
-            // Close desktop settings dropdown if clicked outside
             if (settingsMenuRef.current && !settingsMenuRef.current.contains(event.target)) {
                 setShowSettingsDropdown(false);
             }
-            // Close mobile menu if clicked outside (and not on the hamburger icon itself)
             if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target) && hamburgerRef.current && !hamburgerRef.current.contains(event.target)) {
                 setShowMobileMenu(false);
             }
@@ -66,19 +58,18 @@ const Navbar = ({ language, toggleLanguage, theme, toggleTheme, isIntroAnimation
     }, []);
 
     const handleSettingsClick = (event) => {
-        event.stopPropagation(); // Prevent event from bubbling up and immediately closing the dropdown via handleClickOutside
+        event.stopPropagation();
         setShowSettingsDropdown(prevState => !prevState);
-        setShowMobileMenu(false); // Close mobile menu when opening settings
+        setShowMobileMenu(false);
     };
 
     const handleHamburgerClick = (event) => {
-        event.stopPropagation(); // Stop propagation for hamburger click
+        event.stopPropagation();
         setShowMobileMenu(prevState => !prevState);
-        setShowSettingsDropdown(false); // Close settings dropdown when opening mobile menu
+        setShowSettingsDropdown(false);
     };
 
     const handleLinkClick = () => {
-        // Close both menus when a nav link is clicked
         setShowMobileMenu(false);
         setShowSettingsDropdown(false);
     };
@@ -87,15 +78,14 @@ const Navbar = ({ language, toggleLanguage, theme, toggleTheme, isIntroAnimation
         event.stopPropagation();
         toggleTheme();
         setShowSettingsDropdown(false);
-        if (showMobileMenu) { // If clicked from mobile menu, close mobile menu too
+        if (showMobileMenu) {
             setShowMobileMenu(false);
         }
     };
 
-    // MODIFICAR: Ahora navega a /employee-login en lugar de /employee-access
     const handleEmployeeLoginClick = (event) => {
         event.stopPropagation();
-        navigate('/employee-login'); // Cambiado de /employee-access a /employee-login
+        navigate('/employee-login');
         setShowSettingsDropdown(false);
         if (showMobileMenu) {
             setShowMobileMenu(false);
@@ -123,17 +113,14 @@ const Navbar = ({ language, toggleLanguage, theme, toggleTheme, isIntroAnimation
                 </Link>
             </div>
 
-            {/* Hamburger menu for mobile (visible on mobile, hidden on desktop) */}
             <div className={styles.hamburgerMenu} onClick={handleHamburgerClick} ref={hamburgerRef}>
                 <FaBars />
             </div>
 
-            {/* Desktop Navigation List (visible on desktop, hidden on mobile) */}
             <ul className={styles.desktopNavList}>
                 <li><Link to="/home" className={styles.navLink} onClick={handleLinkClick}><FaHome className={styles.navIcon} />{texts.navbar.home[language]}</Link></li>
                 <li><Link to="/services" className={styles.navLink} onClick={handleLinkClick}><FaTools className={styles.navIcon} />{texts.navbar.services[language]}</Link></li>
                 <li><Link to="/about-us" className={styles.navLink} onClick={handleLinkClick}><FaInfoCircle className={styles.navIcon} />{texts.navbar.aboutUs[language]}</Link></li>
-                {/* Eliminado el enlace a /community */}
                 <li><Link to="/contact" className={styles.navLink} onClick={handleLinkClick}><FaEnvelope className={styles.navIcon} />{texts.navbar.contact[language]}</Link></li>
             </ul>
 
@@ -155,7 +142,6 @@ const Navbar = ({ language, toggleLanguage, theme, toggleTheme, isIntroAnimation
                             {theme === 'light' ? texts.navbar.settings.darkMode[language] : texts.navbar.settings.lightMode[language]}
                         </div>
 
-                        {/* MODIFICAR: Ahora llama a handleEmployeeLoginClick */}
                         <div className={styles.dropdownItem} onClick={handleEmployeeLoginClick}>
                             <FaUserTie className={styles.dropdownItemIcon} />
                             {texts.navbar.settings.employeeAccess[language]}
@@ -169,16 +155,12 @@ const Navbar = ({ language, toggleLanguage, theme, toggleTheme, isIntroAnimation
                 )}
             </div>
 
-            {/* Mobile Overlay Navigation List (hidden on desktop, visible when toggled on mobile) */}
             <ul className={`${styles.mobileNavOverlay} ${showMobileMenu ? styles.active : ''}`} ref={mobileMenuRef}>
-                {/* All nav links for mobile */}
                 <li><Link to="/home" className={styles.navLink} onClick={handleLinkClick}><FaHome className={styles.navIcon} />{texts.navbar.home[language]}</Link></li>
                 <li><Link to="/services" className={styles.navLink} onClick={handleLinkClick}><FaTools className={styles.navIcon} />{texts.navbar.services[language]}</Link></li>
                 <li><Link to="/about-us" className={styles.navLink} onClick={handleLinkClick}><FaInfoCircle className={styles.navIcon} />{texts.navbar.aboutUs[language]}</Link></li>
-                {/* Eliminado el enlace a /community */}
                 <li><Link to="/contact" className={styles.navLink} onClick={handleLinkClick}><FaEnvelope className={styles.navIcon} />{texts.navbar.contact[language]}</Link></li>
 
-                {/* Mobile-specific settings items - always visible in this overlay when active */}
                 <li className={styles.mobileSettingItem} onClick={handleThemeClick}>
                     {theme === 'light' ? (
                         <FaMoon className={styles.dropdownItemIcon} />
@@ -187,7 +169,6 @@ const Navbar = ({ language, toggleLanguage, theme, toggleTheme, isIntroAnimation
                     )}
                     {theme === 'light' ? texts.navbar.settings.darkMode[language] : texts.navbar.settings.lightMode[language]}
                 </li>
-                {/* MODIFICAR: Ahora llama a handleEmployeeLoginClick */}
                 <li className={styles.mobileSettingItem} onClick={handleEmployeeLoginClick}>
                     <FaUserTie className={styles.dropdownItemIcon} />
                     {texts.navbar.settings.employeeAccess[language]}
