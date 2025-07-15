@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/app/static/css/main.32c96b84.css",
-    "main.js": "/app/static/js/main.806d6954.js",
-    "static/media/Services.jpg": "/app/static/media/Services.6a4cf70ac5d8d5065219.jpg",
-    "static/media/Server.jpg": "/app/static/media/Server.7781f12b8434d34f2412.jpg",
-    "static/media/Nosotros .jpg": "/app/static/media/Nosotros .1ca464f0369f398b6a64.jpg",
-    "static/media/FondoLogin.jpg": "/app/static/media/FondoLogin.e0a47a21fc965867aef9.jpg",
-    "static/media/FondoFooter.png": "/app/static/media/FondoFooter.7c720dc465ac315880c3.png",
-    "static/media/GreenLimeWhiteBackground.png": "/app/static/media/GreenLimeWhiteBackground.c68fdd14b7eedf81fac1.png",
-    "static/media/Saludo.jpg": "/app/static/media/Saludo.139a073c76a176c331f5.jpg",
-    "static/media/GreenLimeWhiteBackground.jpg": "/app/static/media/GreenLimeWhiteBackground.b283c663d01614b40756.jpg",
-    "static/media/GreenLimeGreyBackground.jpg": "/app/static/media/GreenLimeGreyBackground.b533e625c0deb4cdc5a7.jpg",
-    "static/media/Logo.png": "/app/static/media/Logo.36cf0a36ff6dd9ad5272.png",
-    "index.html": "/app/index.html",
-    "main.32c96b84.css.map": "/app/static/css/main.32c96b84.css.map",
-    "main.806d6954.js.map": "/app/static/js/main.806d6954.js.map"
+    "main.css": "/static/css/main.feaf3c6c.css",
+    "main.js": "/static/js/main.1a4de307.js",
+    "static/media/Services.jpg": "/static/media/Services.6a4cf70ac5d8d5065219.jpg",
+    "static/media/Server.jpg": "/static/media/Server.7781f12b8434d34f2412.jpg",
+    "static/media/Nosotros .jpg": "/static/media/Nosotros .1ca464f0369f398b6a64.jpg",
+    "static/media/FondoLogin.jpg": "/static/media/FondoLogin.e0a47a21fc965867aef9.jpg",
+    "static/media/FondoFooter.png": "/static/media/FondoFooter.7c720dc465ac315880c3.png",
+    "static/media/GreenLimeWhiteBackground.png": "/static/media/GreenLimeWhiteBackground.c68fdd14b7eedf81fac1.png",
+    "static/media/Saludo.jpg": "/static/media/Saludo.139a073c76a176c331f5.jpg",
+    "static/media/GreenLimeWhiteBackground.jpg": "/static/media/GreenLimeWhiteBackground.b283c663d01614b40756.jpg",
+    "static/media/GreenLimeGreyBackground.jpg": "/static/media/GreenLimeGreyBackground.b533e625c0deb4cdc5a7.jpg",
+    "static/media/Logo.png": "/static/media/Logo.36cf0a36ff6dd9ad5272.png",
+    "index.html": "/index.html",
+    "main.feaf3c6c.css.map": "/static/css/main.feaf3c6c.css.map",
+    "main.1a4de307.js.map": "/static/js/main.1a4de307.js.map"
   },
   "entrypoints": [
-    "static/css/main.32c96b84.css",
-    "static/js/main.806d6954.js"
+    "static/css/main.feaf3c6c.css",
+    "static/js/main.1a4de307.js"
   ]
 }
