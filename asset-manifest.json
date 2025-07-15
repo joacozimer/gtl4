@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.feaf3c6c.css",
-    "main.js": "/static/js/main.1a4de307.js",
+    "main.css": "/static/css/main.4efe34cd.css",
+    "main.js": "/static/js/main.4895bf1c.js",
     "static/media/Services.jpg": "/static/media/Services.6a4cf70ac5d8d5065219.jpg",
     "static/media/Server.jpg": "/static/media/Server.7781f12b8434d34f2412.jpg",
     "static/media/Nosotros .jpg": "/static/media/Nosotros .1ca464f0369f398b6a64.jpg",
     "static/media/FondoLogin.jpg": "/static/media/FondoLogin.e0a47a21fc965867aef9.jpg",
-    "static/media/FondoFooter.png": "/static/media/FondoFooter.7c720dc465ac315880c3.png",
     "static/media/GreenLimeWhiteBackground.png": "/static/media/GreenLimeWhiteBackground.c68fdd14b7eedf81fac1.png",
+    "static/media/FondoGLT.png": "/static/media/FondoGLT.8c20a30a09f9ff6a6d7a.png",
     "static/media/Saludo.jpg": "/static/media/Saludo.139a073c76a176c331f5.jpg",
     "static/media/GreenLimeWhiteBackground.jpg": "/static/media/GreenLimeWhiteBackground.b283c663d01614b40756.jpg",
     "static/media/GreenLimeGreyBackground.jpg": "/static/media/GreenLimeGreyBackground.b533e625c0deb4cdc5a7.jpg",
     "static/media/Logo.png": "/static/media/Logo.36cf0a36ff6dd9ad5272.png",
     "index.html": "/index.html",
-    "main.feaf3c6c.css.map": "/static/css/main.feaf3c6c.css.map",
-    "main.1a4de307.js.map": "/static/js/main.1a4de307.js.map"
+    "main.4efe34cd.css.map": "/static/css/main.4efe34cd.css.map",
+    "main.4895bf1c.js.map": "/static/js/main.4895bf1c.js.map"
   },
   "entrypoints": [
-    "static/css/main.feaf3c6c.css",
-    "static/js/main.1a4de307.js"
+    "static/css/main.4efe34cd.css",
+    "static/js/main.4895bf1c.js"
   ]
 }
