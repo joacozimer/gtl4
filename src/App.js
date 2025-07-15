@@ -15,12 +15,13 @@ import EmployeeLogin from './components/EmployeeLogin/EmployeeLogin';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
-  const [language, setLanguage] = useState('es');
+  const [language, setLanguage] = useState('es'); // Puedes iniciar con 'es', 'en', o 'pt'
   const [theme, setTheme] = useState('light');
   const [isIntroAnimationActive, setIsIntroAnimationActive] = useState(true);
 
-  const toggleLanguage = () => {
-    setLanguage(prevLang => (prevLang === 'es' ? 'en' : 'es'));
+  // ✨ CAMBIO AQUÍ: La función toggleLanguage ahora acepta un argumento 'langCode'
+  const toggleLanguage = (langCode) => {
+    setLanguage(langCode); // Establece directamente el idioma al valor recibido
   };
 
   const toggleTheme = () => {
@@ -43,7 +44,7 @@ function App() {
 
         <Navbar
           language={language}
-          toggleLanguage={toggleLanguage}
+          toggleLanguage={toggleLanguage} // Pasa la función toggleLanguage actualizada
           theme={theme}
           toggleTheme={toggleTheme}
           isIntroAnimationActive={isIntroAnimationActive}

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './AboutUs.module.css';
-import texts from '../../data/texts';
+import texts from '../../data/texts'; // Importa el objeto texts
 import aboutUsGif from '../../assets/images/Nosotros .jpg';
 
 const AboutUsPage = ({ language }) => {
@@ -9,7 +9,8 @@ const AboutUsPage = ({ language }) => {
             <div className={styles.backgroundGifWrapper}>
                 <img src={aboutUsGif} alt="Background" className={styles.backgroundGif} />
             </div>
-            <h1 className={styles.title}>Nosotros</h1>
+            {/* ✨ CAMBIO AQUÍ: Usar el título de texts.js */}
+            <h1 className={styles.title}>{texts.aboutUsPage.title[language]}</h1>
             <div className={styles.contentWrapper}>
                 <div className={styles.cardText}>
                     <p className={styles.introText}>{texts.aboutUsPage.introText[language]}</p>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Services.module.css';
 import texts from '../../data/texts';
-import serviceImg from '../../assets/images/Services.jpg';
+import serviceImg from '../../assets/images/Services2.jpg';
 
 const ServicesPage = ({ language }) => {
     return (
