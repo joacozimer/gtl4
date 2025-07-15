@@ -38,7 +38,7 @@ function App() {
 
   return (
     <GoogleReCaptchaProvider reCaptchaKey="6Lev8X8rAAAAAJzvUUQssasVnbKGm1dtxgxI10L1">
-      <Router basename='/app'>
+      <Router basename='/'>
         <ScrollToTop />
 
         <Navbar
