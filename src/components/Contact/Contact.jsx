@@ -24,7 +24,7 @@ const ContactPage = ({ language }) => {
 
     const { executeRecaptcha } = useGoogleReCaptcha();
 
-    const BACKEND_URL = 'http://localhost:5000';
+    const BACKEND_URL = 'https://vps-5154625-x.dattaweb.com';
 
     const checkServerStatus = async () => {
         try {

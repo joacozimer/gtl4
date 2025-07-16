@@ -9,11 +9,16 @@ const Footer = ({ language }) => {
     return (
         <footer className={styles.footer}>
             <div className={styles.footerContent}>
-               {/* <div className={styles.socialLinks}>
-                    <a href="https://www.Whatsapp.com/" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Whatsapp">
+                <div className={styles.socialLinks}>
+                    <a
+                        href="https://wa.me/5491154837300"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.socialIcon}
+                        aria-label="Whatsapp">
                         <FaWhatsapp />
                     </a>
-                    <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="X">
+                {/*    <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="X">
                         <FaXTwitter /> 
                     </a>
                     <a href="https://www.instagram.com/youraccount" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Instagram">
@@ -21,8 +26,8 @@ const Footer = ({ language }) => {
                     </a>
                     <a href="https://www.linkedin.com/company/yourcompany" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="LinkedIn">
                         <FaLinkedin />
-                    </a>
-                </div>*/}
+                    </a>*/}
+                </div>
 
                 <div className={styles.legalLinks}>
                     <Link to="/privacy-policy" className={styles.legalLink}>
