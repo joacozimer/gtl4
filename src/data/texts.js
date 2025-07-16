@@ -84,13 +84,22 @@ const texts = {
         },
         introText: {
             es: `
-Somos una empresa líder en tecnología especializada en servicios profesionales de infraestructura y virtualización, comprometida con brindar soluciones robustas, escalables y seguras para entornos empresariales modernos.
+Somos una compañía joven que reúne la experiencia de profesionales con muchos años de trayectoria en el mercado tecnológico de Argentina y de América Latina.
+La experiencia de nuestro equipo nos permite entender las necesidades del cliente, porque nosotros ya fuimos ese cliente, y ahora queremos darle las soluciones que nos hubiese gustado tener en el pasado.
+Comprendemos los requerimientos de las empresas, sus necesidades y las respuestas que esperan de sus proveedores de servicios.
+Nos especializamos en el diseño e implementación de soluciones simples y eficientes, trabajando en estrecha colaboración con las principales marcas del mercado para la plataformas x86. Contamos con un equipo multidisciplinario altamente calificado y comprometido en resolver los desafíos tecnológicos.
 `,
             en: `
-We are a leading technology company specializing in professional infrastructure and virtualization services, committed to providing robust, scalable, and secure solutions for modern enterprise environments.
+We are a young company that brings together the experience of professionals with many years of experience in the technology market in Argentina and Latin America.
+Our team's expertise allows us to understand our clients' needs, because we were once that client, and now we want to provide them with the solutions we wish we had in the past.
+We understand companies' requirements, their needs, and the responses they expect from their service providers.
+We specialize in the design and implementation of simple and efficient solutions, working closely with the market's leading brands for x86 platforms. We have a highly qualified multidisciplinary team committed to solving technological challenges.
 `,
             pt: `
-Somos uma empresa líder em tecnologia especializada em serviços profissionais de infraestrutura e virtualização, comprometida em fornecer soluções robustas, escaláveis e seguras para ambientes empresariais modernos.
+Somos uma empresa jovem que reúne a experiência de profissionais com muitos anos de atuação no mercado de tecnologia na Argentina e na América Latina.
+A expertise da nossa equipe nos permite entender as necessidades dos nossos clientes, pois já fomos clientes e agora queremos oferecer a eles as soluções que gostaríamos de ter tido no passado.
+Entendemos os requisitos das empresas, suas necessidades e as respostas que esperam de seus provedores de serviços.
+Somos especializados no design e implementação de soluções simples e eficientes, trabalhando em estreita colaboração com as marcas líderes de mercado para plataformas x86. Contamos com uma equipe multidisciplinar altamente qualificada e comprometida em solucionar desafios tecnológicos.
 `
         }
     },

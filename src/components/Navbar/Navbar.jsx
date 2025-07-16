@@ -141,7 +141,7 @@ const Navbar = ({ language, toggleLanguage, theme, toggleTheme, isIntroAnimation
                 <li><Link to="/" className={styles.navLink} onClick={handleLinkClick}><FaHome className={styles.navIcon} />{texts.navbar.home[language]}</Link></li>
                 <li><Link to="/services" className={styles.navLink} onClick={handleLinkClick}><FaTools className={styles.navIcon} />{texts.navbar.services[language]}</Link></li>
                 <li><Link to="/about-us" className={styles.navLink} onClick={handleLinkClick}><FaInfoCircle className={styles.navIcon} />{texts.navbar.aboutUs[language]}</Link></li>
-                <li><Link to="/community" className={styles.navLink} onClick={handleLinkClick}><FaInfoCircle className={styles.navIcon} />{texts.navbar.community[language]}</Link></li>
+                {/*<li><Link to="/community" className={styles.navLink} onClick=*/}{/*{handleLinkClick}><FaInfoCircle className={styles.navIcon} />{texts.navbar.community[language]}</Link></li>*/}
                 <li><Link to="/contact" className={styles.navLink} onClick={handleLinkClick}><FaEnvelope className={styles.navIcon} />{texts.navbar.contact[language]}</Link></li>
             </ul>
 
