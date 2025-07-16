@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.9c729f5c.css",
-    "main.js": "/static/js/main.de08b6d9.js",
+    "main.js": "/static/js/main.6c136501.js",
     "static/media/Server.jpg": "/static/media/Server.7781f12b8434d34f2412.jpg",
     "static/media/Nosotros .jpg": "/static/media/Nosotros .1ca464f0369f398b6a64.jpg",
     "static/media/FondoLogin.jpg": "/static/media/FondoLogin.e0a47a21fc965867aef9.jpg",
@@ -15,10 +15,10 @@
     "static/media/ArgentinaFlag.png": "/static/media/ArgentinaFlag.f2013f960845c644bc7c.png",
     "index.html": "/index.html",
     "main.9c729f5c.css.map": "/static/css/main.9c729f5c.css.map",
-    "main.de08b6d9.js.map": "/static/js/main.de08b6d9.js.map"
+    "main.6c136501.js.map": "/static/js/main.6c136501.js.map"
   },
   "entrypoints": [
     "static/css/main.9c729f5c.css",
-    "static/js/main.de08b6d9.js"
+    "static/js/main.6c136501.js"
   ]
 }
