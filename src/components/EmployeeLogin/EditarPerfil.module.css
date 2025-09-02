@@ -1,0 +1,149 @@
+/* src/components/EmployeeAccess/EditarPerfil.module.css */
+
+.profileContainer {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.darkTheme.profileContainer {
+    background-color: var(--background-color-dark-secondary);
+    color: var(--text-color-dark);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.title {
+    text-align: center;
+    color: #28a745;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+}
+
+.profileForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.formGroup label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-color-light);
+}
+
+.darkTheme .formGroup label {
+    color: var(--text-color-dark);
+}
+
+.inputField,
+.readOnlyInput {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+    /* Ensures padding doesn't increase width */
+    background-color: #f9f9f9;
+    color: #333;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.darkTheme .inputField,
+.darkTheme .readOnlyInput {
+    background-color: var(--input-background-dark);
+    border-color: var(--input-border-dark);
+    color: var(--text-color-dark);
+}
+
+
+.inputField:focus {
+    border-color: #28a745;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+}
+
+.readOnlyInput {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+.darkTheme .readOnlyInput {
+    background-color: #444;
+    border-color: #555;
+    color: #bbb;
+}
+
+.formGroup input[type="checkbox"] {
+    margin-top: 10px;
+    width: auto;
+    align-self: flex-start;
+    /* Align checkbox to the start */
+    transform: scale(1.2);
+    /* Make checkbox slightly larger */
+}
+
+.saveButton {
+    padding: 15px 25px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    align-self: center;
+    /* Center the button */
+    width: auto;
+    /* Auto width */
+    min-width: 200px;
+    margin-top: 20px;
+}
+
+.saveButton:hover:not(:disabled) {
+    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+}
+
+.saveButton:disabled {
+    background-color: #a0a0a0;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.errorMessage {
+    color: #dc3545;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profileContainer {
+        margin: 20px 15px;
+        padding: 20px;
+    }
+
+    .title {
+        font-size: 1.8em;
+    }
+
+    .saveButton {
+        width: 100%;
+        min-width: unset;
+    }
+}

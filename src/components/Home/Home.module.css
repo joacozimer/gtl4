@@ -8,6 +8,7 @@
     overflow: hidden;
     padding-right: 10%;
     box-sizing: border-box;
+    transition: background-color 0.3s ease;
 }
 
 .greenLimeLogo {
@@ -28,7 +29,8 @@
     object-fit: contain;
     z-index: 10000;
     opacity: 1;
-    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, opacity; /* Optimización para animaciones */
 }
 
 .imageCard {
@@ -41,6 +43,11 @@
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 5;
+    will-change: transform; /* Optimización para animaciones */
+}
+
+:global(body.dark) .imageCard {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 @keyframes backgroundZoom {
@@ -72,20 +79,32 @@
     display: block;
     animation: backgroundZoom 15s ease-in-out infinite;
     transform: scale(1);
+    will-change: transform; /* Optimización para animaciones */
+}
+
+:global(body.dark) .imageBackground {
+    filter: brightness(0.7) contrast(1.1); /* Ajuste para modo oscuro */
 }
 
 .textCard {
     position: relative;
     z-index: 10;
-    background-color: white;
+    background-color: var(--background-color, white);
     padding: 60px 40px;
     border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     text-align: left;
     max-width: 500px;
-    color: #333;
+    color: var(--text-color, #333);
     opacity: 1;
     transform: translateY(0);
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+:global(body.dark) .textCard {
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
 }
 
 .title {
@@ -101,16 +120,33 @@
     text-align: left;
 }
 
+/* Tablets */
+@media (max-width: 1024px) {
+    .homeContainer {
+        justify-content: center;
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+    
+    .textCard {
+        padding: 50px 30px;
+        max-width: 450px;
+    }
+}
+
+/* Mobile devices */
 @media (max-width: 768px) {
     .homeContainer {
         justify-content: center;
         padding-right: 0;
+        padding-left: 0;
     }
 
     .textCard {
         padding: 40px 25px;
         max-width: 90%;
         text-align: center;
+        margin: 0 15px;
     }
 
     .title {
@@ -125,5 +161,24 @@
 
     .introLogo {
         width: 300px;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .textCard {
+        padding: 30px 20px;
+    }
+    
+    .title {
+        font-size: 2em;
+    }
+    
+    .description {
+        font-size: 1em;
+    }
+    
+    .introLogo {
+        width: 250px;
     }
 }

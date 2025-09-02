@@ -1,3 +1,4 @@
+// src/data/texts.js
 const texts = {
     navbar: {
         home: { es: "Inicio", en: "Home", pt: "Início" },
@@ -5,6 +6,7 @@ const texts = {
         aboutUs: { es: "Sobre Nosotros", en: "About Us", pt: "Sobre Nós" },
         community: { es: "Comunidad", en: "Community", pt: "Comunidade" },
         contact: { es: "Contáctenos", en: "Contact Us", pt: "Contate-nos" },
+        quickAssist: { es: "Asistencia Rápida", en: "Quick Assist", pt: "Assistência Rápida" },
         settings: {
             darkMode: { es: "Modo Oscuro", en: "Dark Mode", pt: "Modo Escuro" },
             lightMode: { es: "Modo Claro", en: "Light Mode", pt: "Modo Claro" },
@@ -19,7 +21,7 @@ const texts = {
         description: {
             es: "Green Lime Technologies es una empresa de servicios tecnológicos, ofrecemos soluciones ágiles y efectivas a nuestros clientes. Entendemos necesidades, brindamos soluciones flexibles y ofrecemos resultados a la medida del cliente. Somos especialistas en trabajos de mantenimiento de equipos de todos los tamaños.",
             en: "Green Lime Technologies is a technology services company, we offer agile and effective solutions to our clients. We understand needs, provide flexible solutions, and offer results tailored to the client. We are specialists in equipment maintenance of all sizes.",
-            pt: "Green Lime Technologies é uma empresa de serviços de tecnologia, oferecemos soluções ágeis e eficazes aos nossos clientes. Entendemos as necessidades, fornecemos soluções flexíveis e oferecemos resultados sob medida para o cliente. Somos especialistas em trabalhos de manutenção de equipamentos de todos os tamanhos."
+            pt: "A Green Lime Technologies é uma empresa de serviços de tecnologia, oferecemos soluções ágeis e eficazes aos nossos clientes. Entendemos as necessidades, fornecemos soluções flexíveis e oferecemos resultados sob medida para o cliente. Somos especialistas em trabalhos de manutenção de equipamentos de todos os tamanhos."
         },
     },
 
@@ -87,7 +89,7 @@ const texts = {
 Somos una compañía joven que reúne la experiencia de profesionales con muchos años de trayectoria en el mercado tecnológico de Argentina y de América Latina.
 La experiencia de nuestro equipo nos permite entender las necesidades del cliente, porque nosotros ya fuimos ese cliente, y ahora queremos darle las soluciones que nos hubiese gustado tener en el pasado.
 Comprendemos los requerimientos de las empresas, sus necesidades y las respuestas que esperan de sus proveedores de servicios.
-Nos especializamos en el diseño e implementación de soluciones simples y eficientes, trabajando en estrecha colaboración con las principales marcas del mercado para la plataformas x86. Contamos con un equipo multidisciplinario altamente calificado y comprometido en resolver los desafíos tecnológicos.
+Nos especializamos en el diseño e implementación de soluciones simples y eficientes, trabajando en estrecha colaboración con las principales marcas del mercado para la plataformas x86. Contamos con un equipo multidisciplinario altamente calificado y comprometido en resolver los desafíos tecnológicos.
 `,
             en: `
 We are a young company that brings together the experience of professionals with many years of experience in the technology market in Argentina and Latin America.
@@ -126,20 +128,107 @@ Somos especializados no design e implementação de soluções simples e eficien
     },
 
     employeeLogin: {
-        title: { es: "Acceso a Privado", en: "Private Access", pt: "Acesso Privado" },
-        emailPlaceholder: { es: "Correo Electrónico @greenlimetech.com", en: "Email @greenlimetech.com", pt: "Email @greenlimetech.com" },
+        title: { es: "Acceso Privado", en: "Private Access", pt: "Acesso Privado" },
+        emailPlaceholder: { es: "Correo electrónico", en: "Email", pt: "E-mail" },
         passwordPlaceholder: { es: "Contraseña", en: "Password", pt: "Senha" },
         loginButton: { es: "Iniciar Sesión", en: "Log In", pt: "Entrar" },
+        loginSuccess: { es: '¡Inicio de sesión exitoso! Redirigiendo...', en: 'Login successful! Redirecting...', pt: 'Login bem-sucedido! Redirecionando...' },
+        loginError: { es: 'Credenciales incorrectas. Por favor, inténtalo de nuevo.', en: 'Incorrect credentials. Please try again.', pt: 'Credenciais incorretas. Por favor, tente novamente.' },
+        emptyFields: { es: 'Por favor, completa ambos campos.', en: 'Please complete both fields.', pt: 'Por favor, preencha ambos os campos.' },
         domainErrorTitle: { es: "Error de Dominio", en: "Domain Error", pt: "Erro de Domínio" },
         domainErrorMessage: { es: "El correo electrónico debe ser de dominio @greenlimetech.com", en: "Email must be from @greenlimetech.com domain", pt: "O email deve ser do domínio @greenlimetech.com" },
         loginSuccessTitle: { es: "¡Inicio de Sesión Exitoso!", en: "Login Successful!", pt: "Login Bem-sucedido!" },
         loginSuccessMessage: { es: "Redirigiendo a la página de empleados...", en: "Redirecting to employee page...", pt: "Redirecionando para a página de funcionários..." },
         credentialsErrorTitle: { es: "Error de Credenciales", en: "Credential Error", pt: "Erro de Credenciais" },
         credentialsErrorMessage: { es: "Correo electrónico o contraseña incorrectos.", en: "Incorrect email or password.", pt: "Email ou senha incorretos." },
+        connectionErrorTitle: { es: "Error de Conexión", en: "Connection Error", pt: "Erro de Conexão" },
+        connectionErrorMessage: { es: "No se pudo conectar con el servidor. Inténtalo de nuevo.", en: "Could not connect to the server. Please try again.", pt: "Não foi possível conectar ao servidor. Tente novamente." },
+        changePasswordRequiredTitle: { es: "Cambio de Contraseña Requerido", en: "Password Change Required", pt: "Alteração de Senha Necessária" },
+        changePasswordRequiredMessage: { es: "Debes cambiar tu contraseña por seguridad.", en: "You must change your password for security reasons.", pt: "Você deve alterar sua senha por motivos de segurança." },
+        dummyEmployees: [
+            { id: 'emp001', name: 'Juan Perez', email: 'tecnico1@greenlimetech.com', role: 'Technician' },
+            { id: 'emp002', name: 'Maria Rodriguez', email: 'tecnico2@greenlimetech.com', role: 'Technician' },
+            { id: 'emp003', name: 'Admin General', email: 'admin@greenlimetech.com', role: 'Admin' },
+        ],
+    },
+
+    changePassword: {
+        title: { es: "Cambiar Contraseña", en: "Change Password", pt: "Mudar Senha" },
+        info: { es: "Por favor, establece una nueva contraseña para tu cuenta.", en: "Please set a new password for your account.", pt: "Por favor, defina uma nova senha para sua conta." },
+        newPasswordPlaceholder: { es: "Nueva Contraseña", en: "New Password", pt: "Nova Senha" },
+        confirmPasswordPlaceholder: { es: "Confirmar Nueva Contraseña", en: "Confirm New Password", pt: "Confirmar Nova Senha" },
+        submitButton: { es: "Establecer Nueva Contraseña", en: "Set New Password", pt: "Definir Nova Senha" },
+        passwordMismatchTitle: { es: "Las contraseñas no coinciden", en: "Passwords Do Not Match", pt: "As senhas não coincidem" },
+        passwordMismatchMessage: { es: "Asegúrate de que la nueva contraseña y su confirmación sean iguales.", en: "Make sure the new password and its confirmation are the same.", pt: "Certifique-se de que a nova senha e sua confirmação são iguais." },
+        passwordLengthTitle: { es: "Contraseña Demasiado Corta", en: "Password Too Short", pt: "Senha Muito Curta" },
+        passwordLengthMessage: { es: "La contraseña debe tener al menos 8 caracteres.", en: "The password must be at least 8 characters long.", pt: "A senha deve ter pelo menos 8 caracteres." },
+        changeSuccessTitle: { es: "Contraseña Actualizada", en: "Password Updated", pt: "Senha Atualizada" },
+        changeSuccessMessage: { es: "Tu contraseña ha sido actualizada exitosamente.", en: "Your password has been successfully updated.", pt: "Sua senha foi atualizada com sucesso." },
+        changeErrorTitle: { es: "Error al Cambiar Contraseña", en: "Error Changing Password", pt: "Erro ao Mudar Senha" },
+        changeErrorMessage: { es: "Hubo un error al intentar cambiar tu contraseña.", en: "There was an error trying to change your password.", pt: "Houve um erro ao tentar mudar sua senha." },
+        connectionErrorTitle: { es: "Error de Conexión", en: "Connection Error", pt: "Erro de Conexão" },
+        connectionErrorMessage: { es: "No se pudo conectar con el servidor para cambiar la contraseña.", en: "Could not connect to the server to change the password.", pt: "Não foi possível conectar ao servidor para mudar a senha." },
+    },
+
+    ticketera: {
+        title: { es: 'Gestión de Tickets', en: 'Ticket Management', pt: 'Gerenciamento de Tickets' },
+        adminGreeting: { es: 'Bienvenido, Administrador. Aquí puedes ver y asignar todos los tickets.', en: 'Welcome, Admin. Here you can view and assign all tickets.', pt: 'Bem-vindo, Administrador. Aqui você pode visualizar e atribuir todos os tickets.' },
+        technicianGreeting: { es: 'Bienvenido, Técnico. Aquí puedes ver solo tus tickets asignados.', en: 'Welcome, Technician. Here you can see only your assigned tickets.', pt: 'Bem-vindo, Técnico. Aqui você pode ver apenas seus tickets atribuídos.' },
+        noTickets: { es: 'No hay tickets para mostrar en este momento.', en: 'No tickets to display at this time.', pt: 'Não há tickets para exibir no momento.' },
+        priorityLabel: { es: 'Prioridad', en: 'Priority', pt: 'Prioridade' },
+        assignedToLabel: { es: 'Asignado a', en: 'Assigned to', pt: 'Atribuído a' },
+        unassignedLabel: { es: 'Sin Asignar', en: 'Unassigned', pt: 'Não Atribuído' },
+        createdAtLabel: { es: 'Creado el', en: 'Created at', pt: 'Criado em' },
+        lastUpdateLabel: { es: 'Última Actualización', en: 'Last Update', pt: 'Última Atualização' },
+        selectEmployeeLabel: { es: 'Seleccionar Empleado', en: 'Select Employee', pt: 'Selecionar Funcionário' },
+        assignButton: { es: 'Asignar', en: 'Assign', pt: 'Atribuir' },
+        closeTicketButton: { es: 'Cerrar Ticket', en: 'Close Ticket', pt: 'Fechar Ticket' },
+        reopenTicketButton: { es: 'Reabrir Ticket', en: 'Reopen Ticket', pt: 'Reabrir Ticket' },
+        noEmployeeSelectedTitle: { es: 'Empleado no seleccionado', en: 'Employee not selected', pt: 'Funcionário não selecionado' },
+        noEmployeeSelectedMessage: { es: 'Por favor, selecciona un empleado para asignar el ticket.', en: 'Please select an employee to assign the ticket.', pt: 'Por favor, selecione um funcionário para atribuir o ticket.' },
+        invalidEmployeeTitle: { es: 'Empleado Inválido', en: 'Invalid Employee', pt: 'Funcionário Inválido' },
+        invalidEmployeeMessage: { es: 'El empleado seleccionado no es válido.', en: 'The selected employee is not valid.', pt: 'O funcionário selecionado não é válido.' },
+        assignSuccessTitle: { es: 'Ticket Asignado', en: 'Ticket Assigned', pt: 'Ticket Atribuído' },
+        assignSuccessMessage: { es: 'Ticket asignado exitosamente a', en: 'Ticket successfully assigned to', pt: 'Ticket atribuído com sucesso a' },
+        closeSuccessTitle: { es: 'Ticket Cerrado', en: 'Ticket Closed', pt: 'Ticket Fechado' },
+        closeSuccessMessage: { es: 'El ticket ha sido cerrado exitosamente.', en: 'The ticket has been successfully closed.', pt: 'O ticket foi fechado com sucesso.' },
+        reopenSuccessTitle: { es: 'Ticket Reabierto', en: 'Ticket Reopened', pt: 'Ticket Reaberto' },
+        reopenSuccessMessage: { es: 'El ticket ha sido reabierto y está sin asignar.', en: 'The ticket has been reopened and is unassigned.', pt: 'O ticket foi reaberto e está não atribuído.' },
+        status: {
+            open: { es: 'Abierto', en: 'Open', pt: 'Aberto' },
+            assigned: { es: 'Asignado', en: 'Assigned', pt: 'Atribuído' },
+            closed: { es: 'Cerrado', en: 'Closed', pt: 'Fechado' }
+        },
+        priorityValues: {
+            High: { es: 'Alta', en: 'High', pt: 'Alta' },
+            Medium: { es: 'Media', en: 'Medium', pt: 'Média' },
+            Low: { es: 'Baja', en: 'Low', pt: 'Baixa' }
+        }
+    },
+
+    navbarLateral: {
+        tickets: { es: 'Tickets', en: 'Tickets', pt: 'Tickets' },
+        reports: { es: 'Reportes', en: 'Reports', pt: 'Relatórios' },
+        users: { es: 'Usuarios', en: 'Users', pt: 'Usuários' },
+        settings: { es: 'Configuración', en: 'Settings', pt: 'Configurações' },
+        darkMode: { es: 'Modo Oscuro', en: 'Dark Mode', pt: 'Modo Escuro' },
+        lightMode: { es: 'Modo Claro', en: 'Light Mode', pt: 'Modo Claro' },
+        language: { es: 'Idioma', en: 'Language', pt: 'Idioma' },
+        logout: { es: 'Cerrar Sesión', en: 'Logout', pt: 'Sair' },
+        logoutConfirmTitle: { es: '¿Estás seguro?', en: 'Are you sure?', pt: 'Tem certeza?' },
+        logoutConfirmMessage: { es: 'Estás a punto de cerrar tu sesión.', en: 'You are about to log out.', pt: 'Você está prestes a sair.' },
+        logoutConfirmButton: { es: 'Sí, cerrar sesión', en: 'Yes, log out', pt: 'Sim, sair' },
+        logoutCancelButton: { es: 'Cancelar', en: 'Cancel', pt: 'Cancelar' },
+        logoutSuccessTitle: { es: '¡Sesión Cerrada!', en: 'Logged Out!', pt: 'Sessão Encerrada!' },
+        logoutSuccessMessage: { es: 'Has cerrado sesión correctamente.', en: 'You have been successfully logged out.', pt: 'Você saiu com sucesso.' },
     },
 
     footer: {
-        copyright: { es: "© 2025 Green Lime Technologies. Todos los derechos reservados.", en: "© 2025 Green Lime Technologies. All rights reserved.", pt: "© 2025 Green Lime Technologies. Todos os direitos reservados." },
+        copyright: {
+            es: "© 2025 Green Lime Technologies. Todos los derechos reservados.",
+            en: "© 2025 Green Lime Technologies. All rights reserved.",
+            pt: "© 2025 Green Lime Technologies. Todos os direitos reservados."
+        },
     },
 };
 

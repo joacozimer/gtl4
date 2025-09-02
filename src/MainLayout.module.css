@@ -1,0 +1,68 @@
+/* src/MainLayout.css */
+
+.main-layout-container {
+    display: flex;
+    flex-direction: column;
+    /* Default for non-dashboard pages */
+    min-height: 100vh;
+    background-color: var(--background-color-light);
+    /* From colors.module.css */
+    color: var(--text-color-light);
+    /* From colors.module.css */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-layout-container.dark-theme {
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+}
+
+/* Styles specifically for the employee dashboard layout */
+.main-layout-container.dashboard-layout-container {
+    flex-direction: row;
+    /* Sidebar and content side-by-side */
+}
+
+.main-content-area {
+    flex-grow: 1;
+    padding: 20px;
+    /* Default padding for all content areas */
+    transition: margin-left 0.3s ease;
+    /* Smooth transition for content shift */
+}
+
+/* Adjust content area when sidebar is open on dashboard */
+.main-layout-container.dashboard-layout-container .main-content-area {
+    margin-left: 250px;
+    /* Space for fixed sidebar */
+    max-width: calc(100% - 250px);
+}
+
+/* Adjust content area when sidebar is closed on dashboard */
+.main-layout-container.dashboard-layout-container .main-content-area.content-full-width {
+    margin-left: 80px;
+    /* If you want a mini-sidebar width */
+    /* Or margin-left: 0; if sidebar completely disappears */
+    max-width: 100%;
+    /* Take full width */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .main-layout-container.dashboard-layout-container {
+        flex-direction: column;
+        /* Stack sidebar and content vertically */
+    }
+
+    .main-layout-container.dashboard-layout-container .main-content-area {
+        margin-left: 0;
+        /* Remove left margin when stacked */
+        max-width: 100%;
+        /* Take full width */
+    }
+
+    .main-layout-container.dashboard-layout-container .main-content-area.content-full-width {
+        margin-left: 0;
+        /* No margin when sidebar closed on mobile */
+    }
+}

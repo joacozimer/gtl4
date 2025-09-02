@@ -4,24 +4,25 @@ import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 import './App.css';
 import './styles/colors.module.css';
-import Navbar from './components/Navbar/Navbar';
-import Footer from './components/Footer/Footer';
+
 import HomePage from './components/Home/Home';
 import ServicesPage from './components/Services/Services';
 import AboutUsPage from './components/AboutUs/AboutUs';
 import ContactPage from './components/Contact/Contact';
 import EmployeeLogin from './components/EmployeeLogin/EmployeeLogin';
-
+import Ticketera from './components/Ticketera/Ticketera';
+import EditarPerfil from './components/EmployeeLogin/EditarPerfil';
+import Chat from './components/Chat/Chat';
 import ScrollToTop from './components/ScrollToTop';
+import MainLayout from './MainLayout';
 
 function App() {
-  const [language, setLanguage] = useState('es'); // Puedes iniciar con 'es', 'en', o 'pt'
+  const [language, setLanguage] = useState('es');
   const [theme, setTheme] = useState('light');
   const [isIntroAnimationActive, setIsIntroAnimationActive] = useState(true);
 
-  // ✨ CAMBIO AQUÍ: La función toggleLanguage ahora acepta un argumento 'langCode'
   const toggleLanguage = (langCode) => {
-    setLanguage(langCode); // Establece directamente el idioma al valor recibido
+    setLanguage(langCode);
   };
 
   const toggleTheme = () => {
@@ -37,22 +38,25 @@ function App() {
     setIsIntroAnimationActive(!completed);
   };
 
+  // Verifica si la URL actual es un subdominio.
+  const isSubdomain = window.location.hostname.split('.').length > 2;
+
   return (
     <GoogleReCaptchaProvider reCaptchaKey="6Lev8X8rAAAAAJzvUUQssasVnbKGm1dtxgxI10L1">
       <Router basename='/'>
         <ScrollToTop />
 
-        <Navbar
+        <MainLayout
           language={language}
-          toggleLanguage={toggleLanguage} // Pasa la función toggleLanguage actualizada
+          toggleLanguage={toggleLanguage}
           theme={theme}
           toggleTheme={toggleTheme}
           isIntroAnimationActive={isIntroAnimationActive}
-        />
-
-        <main>
+        >
           <Routes>
-            <Route path="/" element={<Navigate to="/home" replace />} />
+            {/* Solo redirige a /home si no es un subdominio. */}
+            {!isSubdomain && <Route path="/" element={<Navigate to="/home" replace />} />}
+
             <Route
               path="/home"
               element={<HomePage language={language} theme={theme} onIntroAnimationComplete={handleIntroAnimationComplete} />}
@@ -64,11 +68,19 @@ function App() {
               path="/employee-login"
               element={<EmployeeLogin language={language} theme={theme} />}
             />
-            <Route path="*" element={<Navigate to="/home" replace />} />
+            <Route
+              path="/employee-access-dashboard"
+              element={<Ticketera language={language} theme={theme} />}
+            />
+            <Route
+              path="/employee-access-dashboard/edit-profile"
+              element={<EditarPerfil language={language} theme={theme} />}
+            />
+            {/* Solo redirige a /home si no es un subdominio. */}
+            {!isSubdomain && <Route path="*" element={<Navigate to="/home" replace />} />}
+            <Route path="/chat" element={<Chat theme={theme} />} />
           </Routes>
-        </main>
-
-        <Footer language={language} />
+        </MainLayout>
       </Router>
     </GoogleReCaptchaProvider>
   );
